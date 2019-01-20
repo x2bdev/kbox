@@ -144,7 +144,7 @@
                 <li><a href="category.html">Kids</a></li>
                 <li><a href="category.html">New</a></li>
                 <li class="sale"><a href="category.html">Sale</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="/lien-he.html">Contact</a></li>
             </ul>
         </nav>
         <!-- /Navigation -->

@@ -172,10 +172,11 @@
                             });
                             var spanCount = $('.span-count-item');
                             spanCount.text(countItem + ' item(s)');
+                            successMsg('Thêm vào giỏ hàng thành công');
                         },
                         error: function () {
-                            alert("fail");
-                            // errorMsg("Thêm vào giỏ thất bại");
+                            // alert("fail");
+                            errorMsg("Thêm vào giỏ thất bại");
                         }
                     });
                 }

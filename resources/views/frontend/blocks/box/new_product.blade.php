@@ -39,8 +39,7 @@
                                 <a class="btn btn-theme btn-theme-transparent btn-wish-list" href="#"><i
                                             class="fa fa-heart"></i></a><!--
                                             --><a class="btn btn-theme btn-theme-transparent btn-add-cart {{ $value->id }}" href="#">Thêm vào giỏ</a><!--
-                                            --><a class="btn btn-theme btn-theme-transparent btn-compare" href="#"><i
-                                            class="fa fa-copy"></i></a>
+                                            -->
                             </div>
                         </div>
                     </div>

@@ -9,6 +9,7 @@
 <script src="{{ asset('public/frontend/assets/plugins/jquery.easing.min.js') }}"></script>
 <script src="{{ asset('public/frontend/assets/plugins/jquery.smoothscroll.min.js') }}"></script>
 <script src="{{ asset('public/frontend/assets/plugins/smooth-scrollbar.min.js') }}"></script>
+{!! Html::script('st-admin/js/bootstrap-notify.min.js') !!}
 
 <!-- JS Page Level -->
 <script src="{{ asset('public/frontend/assets/js/theme.js') }}"></script>
@@ -17,6 +18,7 @@
 {{--<script src="{{ asset('public/frontend/assets/plugins/jquery.cookie.js') }}"></script>--}}
 {{--<script src="{{ asset('public/frontend/assets/js/theme-config.js') }}"></script>--}}
 <!--<![endif]-->
+<script src="{{ asset('public/frontend/assets/js/my-script.js') }}"></script>
 @yield('js_customer')
 @yield('js_button')
 @yield('js_content')

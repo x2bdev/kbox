@@ -18,15 +18,15 @@ class ViewServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-//        view()->composer('*', function ($view) {
-//            $contactConfigItem = Setting::where('option_name', 'setting_contact')->first();
-//            $dataContact = json_decode($contactConfigItem->option_value);
-//            $socialConfigItem = Setting::where('option_name', 'setting_social')->first();
-//            $dataSocial = json_decode($socialConfigItem->option_value);
-//
-//
-//            $view->with(['contactConfig' => $dataContact, 'dataSocial' => $dataSocial]);
-//        });
+        view()->composer('*', function ($view) {
+            $contactConfigItem = Setting::where('option_name', 'setting_contact')->first();
+            $dataContact = json_decode($contactConfigItem->option_value);
+            $socialConfigItem = Setting::where('option_name', 'setting_social')->first();
+            $dataSocial = json_decode($socialConfigItem->option_value);
+
+
+            $view->with(['contactConfig' => $dataContact, 'dataSocial' => $dataSocial]);
+        });
 //        'frontend.layouts.popup_cart'
         view()->composer('*', function ($view) {
             $products = "";

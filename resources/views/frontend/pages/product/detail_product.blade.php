@@ -165,61 +165,7 @@
                                 ornare. Integer a orci enim.</p>
                         </div>
                         <div class="tab-pane fade" id="reviews">
-
-                            <div class="comments">
-                                <div class="media comment">
-                                    <a href="#" class="pull-left comment-avatar">
-                                        <img alt=""
-                                             src=" {{ asset('public/frontend/assets/img/preview/avatars/avatar-1.jpg') }}"
-                                             class="media-object">
-                                    </a>
-                                    <div class="media-body">
-                                        <p class="comment-meta"><span class="comment-author"><a
-                                                        href="#">User Name Here</a> <span class="comment-date"> 26 days ago <i
-                                                            class="fa fa-flag"></i></span></span></p>
-                                        <p class="comment-text">Donec ullamcorper nulla non metus auctor fringilla.
-                                            Etiam porta sem malesuada magna mollis euismd. Curabitur blandit tempus
-                                            porttitor. Integer posuere erat a ante venenatis dapibus posuere.</p>
-                                    </div>
-                                </div>
-                                <div class="media comment">
-                                    <a href="#" class="pull-left comment-avatar">
-                                        <img alt=""
-                                             src=" {{ asset('public/frontend/assets/img/preview/avatars/avatar-3.jpg') }}"
-                                             class="media-object">
-                                    </a>
-                                    <div class="media-body">
-                                        <p class="comment-meta"><span class="comment-author"><a
-                                                        href="#">User Name Here</a> <span class="comment-date"> 26 days ago <i
-                                                            class="fa fa-flag"></i></span></span></p>
-                                        <p class="comment-text">Donec ullamcorper nulla non metus auctor fringilla.
-                                            Etiam porta sem malesuada magna mollis euismd. Curabitur blandit tempus
-                                            porttitor. Integer posuere erat a ante venenatis dapibus posuere.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="comments-form">
-                                <h4 class="block-title">Add a Review</h4>
-                                <form method="post" action="#" name="comments-form" id="comments-form">
-                                    <div class="form-group"><input type="text" placeholder="Your name and surname"
-                                                                   class="form-control" title="comments-form-name"
-                                                                   name="comments-form-name"></div>
-                                    <div class="form-group"><input type="text" placeholder="Your email adress"
-                                                                   class="form-control" title="comments-form-email"
-                                                                   name="comments-formemail"></div>
-                                    <div class="form-group"><textarea placeholder="Your message" class="form-control"
-                                                                      title="comments-form-comments"
-                                                                      name="comments-form-comments" rows="6"></textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-theme btn-theme-transparent btn-icon-left"
-                                                id="submit"><i class="fa fa-comment"></i> Review
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
-                            <!-- // -->
-
+                            <div data-width="100%" class="fb-comments" data-href="{{ $url }}" data-numposts="5"></div>
                         </div>
                     </div>
                 </div>
@@ -492,10 +438,11 @@
                                     });
                                     var spanCount = $('.span-count-item');
                                     spanCount.text(countItem + ' item(s)');
+                                    successMsg('Thêm vào giỏ hàng thành công');
                                 },
                                 error: function () {
                                     alert("fail");
-                                    // errorMsg("Thêm vào giỏ thất bại");
+                                    errorMsg("Thêm vào giỏ thất bại");
                                 }
                             });
                         } else {
@@ -504,8 +451,8 @@
                             //     position: 'center-end',
                             //     showConfirmButton: true,
                             // });
-                            // errorMsg("Số lượng không hợp lệ");
-                            alert("Số lượng không hợp lệ");
+                            errorMsg("Số lượng không hợp lệ");
+                            //alert("Số lượng không hợp lệ");
 
                         }
                     }

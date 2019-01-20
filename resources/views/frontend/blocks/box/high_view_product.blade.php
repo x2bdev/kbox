@@ -24,8 +24,7 @@
                                             class="fa fa-heart"></i></a><!--
                             --><a class="btn btn-theme btn-theme-transparent btn-icon-left btn-add-cart {{ $value->id }}" href="#"><i
                                             class="fa fa-shopping-cart"></i>Thêm vào giỏ</a><!--
-                            --><a class="btn btn-theme btn-theme-transparent btn-compare" href="#"><i
-                                            class="fa fa-copy"></i></a>
+                            -->
                             </div>
                         </div>
                     </div>
