@@ -37,6 +37,35 @@ class NestedRepository
         return $model::create($data);
     }
 
+    public function getNodeInfo($params, $options = null)
+    {
+        if ($options == null) {
+            return DB::table($this->_table)
+                    ->where('left', '>', 0)
+                    ->where('id', '=', $params->id)
+                    ->first();
+        }
+
+        if ($options['task'] == 'move-up') {
+            return DB::table($this->_table)
+                    ->where('right', '<', $params->left)
+                    ->where('id', '<>', $params->id)
+                    ->where('parent', '=', $params->parent)
+                    ->orderBy('left', 'DESC')
+                    ->first();
+        }
+
+        if ($options['task'] == 'move-down') {
+            return DB::table($this->_table)
+                    ->where('left', '>', $params->right)
+                    ->where('id', '<>', $params->id)
+                    ->where('parent', '=', $params->parent)
+                    ->orderBy('left', 'ASC')
+                    ->first();
+        }
+    }
+
+
     /**
      * @param $data
      * @param $nodeID
@@ -174,6 +203,159 @@ class NestedRepository
             ]);
     }
 
+    public function moveBefore($nodeMoveID, $nodeSelectionID)
+    {
+
+        $totalNode = $this->detachBranch($nodeMoveID);
+
+        $nodeSelectionInfo = $this->findById($this->_model, $nodeSelectionID);
+        $nodeMoveInfo = $this->findById($this->_model, $nodeMoveID);
+        // ========================= Node on tree (LEFT) ========================
+        $updateLeft = DB::table($this->_table)
+            ->where('left', '>=', $nodeSelectionInfo->left)
+            ->where('right', '>', 0)
+            ->get();
+        if (!empty($updateLeft)) {
+            foreach ($updateLeft as $node) {
+                $leftNew = $node->left + ($totalNode * 2);
+                DB::table($this->_table)
+                    ->where('id', $node->id)
+                    ->update([
+                        'left' => $leftNew
+                    ]);
+            }
+        }
+
+        // ========================= Node on tree (RIGHT) =========================
+        $updateRight = DB::table($this->_table)
+            ->where('right', '>', $nodeSelectionInfo->left)
+            ->get();
+        if (!empty($updateRight)) {
+            foreach ($updateRight as $node) {
+                $rightNew = $node->right + ($totalNode * 2);
+                DB::table($this->_table)
+                    ->where('id', $node->id)
+                    ->update([
+                        'right' => $rightNew
+                    ]);
+            }
+        }
+        // ========================= Node on branch (LEVEL) =========================
+        $updateLevel = DB::table($this->_table)
+            ->where('right', '<=', 0)
+            ->get();
+        if (!empty($updateLevel)) {
+            foreach ($updateLevel as $node) {
+                // ========================= Node on branch (LEVEL) =========================
+                $level = $node->level + $nodeSelectionInfo->level - $nodeMoveInfo->level;
+                // ========================= Node on branch (LEFT) ==========================
+                $left = $node->left + $nodeSelectionInfo->left;
+                // ========================= Node on branch (RIGHT) =========================
+                $right = $node->right + $nodeSelectionInfo->left + $totalNode * 2 - 1;
+
+                DB::table($this->_table)
+                    ->where('id', $node->id)
+                    ->update([
+                        'level' => $level,
+                        'left' => $left,
+                        'right' => $right
+                    ]);
+            }
+        }
+
+        // ========================= Node move (PARENT) =========================
+        DB::table($this->_table)
+            ->where('id', $nodeMoveInfo->id)
+            ->update([
+                'parent' => $nodeSelectionInfo->parent
+            ]);
+    }
+
+    public function moveAfter($nodeMoveID, $nodeSelectionID)
+    {
+
+        $totalNode = $this->detachBranch($nodeMoveID);
+
+        $nodeSelectionInfo = $this->findById($this->_model, $nodeSelectionID);
+        $nodeMoveInfo = $this->findById($this->_model, $nodeMoveID);
+        // ========================= Node on tree (LEFT) ========================
+        $updateLeft = DB::table($this->_table)
+            ->where('left', '>', $nodeSelectionInfo->right)
+            ->where('right', '>', 0)
+            ->get();
+        if (!empty($updateLeft)) {
+            foreach ($updateLeft as $node) {
+                $leftNew = $node->left + ($totalNode * 2);
+                DB::table($this->_table)
+                    ->where('id', $node->id)
+                    ->update([
+                        'left' => $leftNew
+                    ]);
+            }
+        }
+
+        // ========================= Node on tree (RIGHT) =========================
+        $updateRight = DB::table($this->_table)
+            ->where('right', '>', $nodeSelectionInfo->right)
+            ->get();
+        if (!empty($updateRight)) {
+            foreach ($updateRight as $node) {
+                $rightNew = $node->right + ($totalNode * 2);
+                DB::table($this->_table)
+                    ->where('id', $node->id)
+                    ->update([
+                        'right' => $rightNew
+                    ]);
+            }
+        }
+        // ========================= Node on branch (LEVEL) =========================
+        $updateLevel = DB::table($this->_table)
+            ->where('right', '<=', 0)
+            ->get();
+        if (!empty($updateLevel)) {
+            foreach ($updateLevel as $node) {
+                // ========================= Node on branch (LEVEL) =========================
+                $level = $node->level + $nodeSelectionInfo->level - $nodeMoveInfo->level;
+                // ========================= Node on branch (LEFT) ==========================
+                $left = $node->left + $nodeSelectionInfo->right + 1;
+                // ========================= Node on branch (RIGHT) =========================
+                $right = $node->right + $nodeSelectionInfo->right + $totalNode * 2;
+
+
+                DB::table($this->_table)
+                    ->where('id', $node->id)
+                    ->update([
+                        'level' => $level,
+                        'left' => $left,
+                        'right' => $right
+                    ]);
+            }
+        }
+
+        // ========================= Node move (PARENT) =========================
+        DB::table($this->_table)
+            ->where('id', $nodeMoveInfo->id)
+            ->update([
+                'parent' => $nodeSelectionInfo->parent
+            ]);
+    }
+
+
+    public function moveUp($nodeID, $options = null)
+    {
+        $nodeInfo = $this->findById($this->_model, $nodeID);
+        $nodeSelection = $this->getNodeInfo($nodeInfo, array('task' => 'move-up'));
+        if (!empty($nodeSelection)) $this->moveBefore($nodeID, $nodeSelection->id);
+    }
+
+    public function moveDown($nodeID, $options = null)
+    {
+        $nodeInfo = $this->findById($this->_model, $nodeID);
+        $nodeSelection = $this->getNodeInfo($nodeInfo, array('task' => 'move-down'));
+        if (!empty($nodeSelection)) $this->moveAfter($nodeID, $nodeSelection->id);
+    }
+
+
     /**
      * @param $nodeMoveID
      * @param null $options
@@ -283,4 +465,18 @@ class NestedRepository
             ->orderBy('left', 'asc')
             ->get();
     }
+
+    public function moveItem($arrParams = null, $options = null)
+    {
+        if ($options == null) {
+            $arrParams['id'] = (int)$arrParams['id'];
+            if ($arrParams['id'] > 0) {
+                if ($arrParams['type'] == 'up') $this->moveUp($arrParams['id']);
+                if ($arrParams['type'] == 'down') $this->moveDown($arrParams['id']);
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

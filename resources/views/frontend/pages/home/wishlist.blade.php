@@ -22,87 +22,19 @@
             <div class="container">
 
                 <div class="row wishlist">
-                    <div class="col-md-9">
+                    <div class="col-md-12">
                         <table class="table">
                             <thead>
                             <tr>
-                                <th>Image</th>
-                                <th>Product Name</th>
-                                <th>Unit Price</th>
-                                <th></th>
+                                <th>Hình ảnh</th>
+                                <th>Tên sản phẩm</th>
+                                <th>Giá tiền</th>
                                 <th></th>
                             </tr>
                             </thead>
-                            <tbody>
-                            <tr>
-                                <td class="image"><a class="media-link" href="#"><i class="fa fa-plus"></i><img src=" {{ asset('public/frontend/assets/img/preview/shop/order-1.jpg') }}" alt=""/></a></td>
-                                <td class="description">
-                                    <h4><a href="#">Standard Product Name Header Here</a></h4>
-                                    by Category Name
-                                </td>
-                                <td class="price">$116.00</td>
-                                <td class="add"><a class="btn btn-theme btn-theme-dark btn-icon-left" href="#"><i class="fa fa-shopping-cart"></i> Add to cart</a></td>
-                                <td class="total"><a href="#"><i class="fa fa-close"></i></a></td>
-                            </tr>
-                            <tr>
-                                <td class="image"><a class="media-link" href="#"><i class="fa fa-plus"></i><img src=" {{ asset('public/frontend/assets/img/preview/shop/order-1.jpg') }}" alt=""/></a></td>
-                                <td class="description">
-                                    <h4><a href="#">Standard Product Name Header Here</a></h4>
-                                    by Category Name
-                                </td>
-                                <td class="price">$116.00</td>
-                                <td class="add"><a class="btn btn-theme btn-theme-dark btn-icon-left" href="#"><i class="fa fa-shopping-cart"></i> Add to cart</a></td>
-                                <td class="total"><a href="#"><i class="fa fa-close"></i></a></td>
-                            </tr>
-                            <tr>
-                                <td class="image"><a class="media-link" href="#"><i class="fa fa-plus"></i><img src=" {{ asset('public/frontend/assets/img/preview/shop/order-1.jpg') }}" alt=""/></a></td>
-                                <td class="description">
-                                    <h4><a href="#">Standard Product Name Header Here</a></h4>
-                                    by Category Name
-                                </td>
-                                <td class="price">$116.00</td>
-                                <td class="add"><a class="btn btn-theme btn-theme-dark btn-icon-left" href="#"><i class="fa fa-shopping-cart"></i> Add to cart</a></td>
-                                <td class="total"><a href="#"><i class="fa fa-close"></i></a></td>
-                            </tr>
+                            <tbody id="table-wishlist-product">
                             </tbody>
                         </table>
-                        <a class="btn btn-theme btn-theme-transparent btn-icon-left btn-continue-shopping" href="#"><i class="fa fa-shopping-cart"></i>Continue shopping</a>
-                    </div>
-                    <div class="col-md-3">
-                        <h3 class="block-title"><span>Login</span></h3>
-                        <form action="#" class="form-sign-in">
-                            <div class="row">
-                                <div class="col-md-12 hello-text-wrap">
-                                    <span class="hello-text text-thin">Hello, welcome to your account</span>
-                                </div>
-                                <div class="col-md-12">
-                                    <a class="btn btn-theme btn-block btn-icon-left facebook" href="#"><i class="fa fa-facebook"></i>Sign in with Facebook</a>
-                                </div>
-                                <div class="col-md-12">
-                                    <a class="btn btn-theme btn-block btn-icon-left twitter" href="#"><i class="fa fa-twitter"></i>Sign in with Twitter</a>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group"><input class="form-control" type="text" placeholder="User name or email"></div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group"><input class="form-control" type="password" placeholder="Your password"></div>
-                                </div>
-                                <div class="col-md-12 col-lg-6">
-                                    <div class="checkbox">
-                                        <label><input type="checkbox"> Remember me</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-12 col-lg-6 text-right-lg">
-                                    <a class="forgot-password" href="#">forgot password?</a>
-                                </div>
-                                <div class="col-md-12">
-                                    <a class="btn btn-theme btn-block btn-theme-dark" href="#">Login</a>
-                                </div>
-                                <div class="col-md-12">
-                                    <a class="btn btn-theme btn-block btn-theme-transparent" href="#">Create account</a>
-                                </div>
-                            </div>
-                        </form>
                     </div>
                 </div>
             </div>
@@ -152,12 +84,66 @@
         <!-- /PAGE -->
 
     </div>
+    <script id="templateHtml" type="text/x-handlebars-template">
+        <tr>
+        <td class="image"><a class="media-link" href="{link}"><img width=200 height=120 src="{image}" alt="{name}"/></a></td>
+        <td class="description">
+            <h4><a href="{link}">{name}</a></h4>
+        </td>
+        <td class="price">{price} VNĐ</td>
+        <td class="total"><a href="javascript:void(0)" onclick="removeWishlistProduct('{id}')"><i class="fa fa-close"></i></a></td>
+        </tr>
+    </script>
 @endsection
 
-@section('js_content')
+@section('js_customer')
     <script>
+        Number.prototype.format = function(n, x, s, c) {
+            var re = '\\d(?=(\\d{' + (x || 3) + '})+' + (n > 0 ? '\\D' : '$') + ')',
+                num = this.toFixed(Math.max(0, ~~n));
+
+            return (c ? num.replace('.', c) : num).replace(new RegExp(re, 'g'), '$&' + (s || ','));
+        };
+
         $(document).ready(function () {
-            
+            var obj = [];
+            objProductFavorite = JSON.parse(localStorage.getItem("favoriteProduct"));
+            if(objProductFavorite.length === 0) {
+                $('#list-product').empty();
+                $('#list-product').append(`<h4 class="text-center">Vẫn chưa có sản phẩm yêu thích nào</h4>`);
+                return false;
+            }
+            else {
+                objProductFavorite.map((item) => {
+                    obj.push(item.id);
+                });
+
+                $.ajax({
+                    type 	: "POST",
+                    url		: "<?php echo route('get-wishlist-product');?>",
+                    headers : {'X-CSRF-TOKEN': token},
+                    data 	: {
+                        ids: obj
+                    },
+                    dataType: 'json',
+                    success: function (response) {
+                        if(response.data.length !==0 ) {
+                            $.each(response.data, (index, value) => {
+                                let htmlMore = $(templateHtml).html();
+                                let image = "public/frontend/assets/img/preview/shop/TEST-SQUARE-IMG.jpg";
+                                let link = '/san-pham/' + value.slug + '-' + value.id + '.html';
+                                let price = value.price.format();
+                                htmlMore = htmlMore.replace(/{id}/g, value.id);
+                                htmlMore = htmlMore.replace(/{name}/g, value.name);
+                                htmlMore = htmlMore.replace(/{price}/g, price);
+                                htmlMore = htmlMore.replace(/{image}/g, image);
+                                htmlMore = htmlMore.replace(/{link}/g, link);
+                                $('#table-wishlist-product').append(htmlMore);
+                            });
+                        }
+                    }
+                });
+            }
         });
     </script>
 @endsection

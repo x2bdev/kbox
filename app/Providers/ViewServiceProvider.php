@@ -23,9 +23,15 @@ class ViewServiceProvider extends ServiceProvider
             $dataContact = json_decode($contactConfigItem->option_value);
             $socialConfigItem = Setting::where('option_name', 'setting_social')->first();
             $dataSocial = json_decode($socialConfigItem->option_value);
+            $seoConfigItem = Setting::where('option_name', 'setting_seo')->first();
+            $dataSeo = json_decode($seoConfigItem->option_value);
 
 
-            $view->with(['contactConfig' => $dataContact, 'dataSocial' => $dataSocial]);
+            $view->with([
+                'contactConfig' => $dataContact, 
+                'dataSocial' => $dataSocial,
+                'seoConfig' => $dataSeo
+            ]);
         });
 //        'frontend.layouts.popup_cart'
         view()->composer('*', function ($view) {

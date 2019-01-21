@@ -160,4 +160,8 @@ class CategoryArticleController extends Controller
     {
         return $this->categoryArticleService->changeStatus($request);
     }
+
+    public function moveNode(Request $request){
+        return $this->categoryArticleService->moveNode($request);
+    }
 }

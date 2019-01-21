@@ -280,4 +280,11 @@ class CategoryArticleService
 
         $this->categoryArticleRepository->update($dataUpdate, $nodeID);
     }
+
+    public function moveNode($request) {
+        $this->nestedRepository->moveItem($request);
+        return redirect()
+            ->route('category-article.index')
+            ->with(['noticeMessage' => Config::get('constants.SUCCESSFUL_MESSAGE.EDIT')]);
+    }
 }

@@ -226,6 +226,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['authAdminRoute']], function
     Route::resource('banner', 'Admin\BannerController');
 
     // Category Article
+    Route::get('category-article/move-node', [
+        'as' => 'category-article.move-node',
+        'uses' => 'Admin\CategoryArticleController@moveNode',
+    ]);
+    
     Route::get('category-article/status', [
         'as' => 'category-article.status',
         'uses' => 'Admin\CategoryArticleController@changeStatus',
