@@ -14,7 +14,7 @@
                             'url'=> route('taikhoan.login.post'),
                             'class' => 'create-account'
                         )) !!}
-                        @if ($errors->any())
+                        @if ($errors->any() && $errors->first('login_fail'))
                             <div class="alert alert-danger">
                                 <ul>
                                     @foreach ($errors->all() as $error)
