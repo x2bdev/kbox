@@ -38,14 +38,14 @@ class CustomerController extends Controller
 
     public function loginUser(LoginUserRequest $request) {
         $data = [
-            'email' => $request->email,
+            'phone' => $request->phone,
             'password' => $request->password,
         ];
 
         if (Auth::guard('customer')->attempt($data)) {
             return redirect(route('trang-chu'));
         } else {
-            $errors = new MessageBag(['login_fail' => 'Email hoặc mật khẩu không đúng']);
+            $errors = new MessageBag(['login_fail' => 'Số điện thoại hoặc mật khẩu không đúng']);
             return redirect()->back()->with('errors', $errors);
         }
     }

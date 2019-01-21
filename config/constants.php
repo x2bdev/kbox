@@ -28,6 +28,7 @@ return [
         'PHONE_NUMERIC'             => 'Điện thoại phải là số.',
         'PHONE_MIN'                 => 'Số điện thoại không hợp lệ',
         'PHONE_MAX'                 => 'Số điện thoại không hợp lệ',
+        'PHONE_UNIQUE'              => 'Số điện thoại đã có người đăng ký.',
 
         'IMAGE_REQUIRED'            => 'Chưa chọn hình ',
         'IMAGE_MIMES'               => 'Chỉ chấp nhận định dạng hình: jpeg,bmp,png',

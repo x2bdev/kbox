@@ -30,7 +30,7 @@ class RegisterUserRequest extends FormRequest
                     'name'                  => 'required|unique:customers,name',
                     'email'                 => 'required|email|unique:customers,email',
                     'password'              => 'required|min:6|max:25',
-                    'phone'                 => 'required|numeric',
+                    'phone'                 => 'required|numeric|unique:customers,phone',
                     'address'               => 'required',
                 ];
                 break;
@@ -52,6 +52,7 @@ class RegisterUserRequest extends FormRequest
             'password.max'       => Config::get('constants.VALIDATE_MESSAGE.PASSWORD_MAX'),
             'phone.required'     => Config::get('constants.VALIDATE_MESSAGE.PHONE_REQUIRED'),
             'phone.numeric'      => Config::get('constants.VALIDATE_MESSAGE.PHONE_NUMERIC'),
+            'phone.unique'       => Config::get('constants.VALIDATE_MESSAGE.NAME_UNIQUE'),
             'address.required'      => Config::get('constants.VALIDATE_MESSAGE.ADDRESS_REQUIRED'),
         ];
     }

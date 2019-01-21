@@ -27,8 +27,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <input value="{{ old('email') }}" class="form-control" type="text" placeholder="Email" name="email">
-                                        {!! $errors->first('email', '<p class="help-block">:message</p>') !!}
+                                        <input value="{{ old('phone') }}" class="form-control" type="text" placeholder="Số điện thoại" name="phone">
+                                        {!! $errors->first('phone', '<p class="help-block">:message</p>') !!}
                                     </div>
                                 </div>
                                 <div class="col-md-12">

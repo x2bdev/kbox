@@ -27,7 +27,7 @@ class LoginUserRequest extends FormRequest
             }
             case 'POST': {
                 return [
-                    'email'                 => 'required|email',
+                    'phone'                 => 'required|numeric',
                     'password'              => 'required',
                 ];
                 break;
@@ -39,8 +39,8 @@ class LoginUserRequest extends FormRequest
 
     public function messages() {
         return [
-            'email.required' => Config::get('constants.VALIDATE_MESSAGE.EMAIL_REQUIRED'),
-            'email.email'   => Config::get('constants.VALIDATE_MESSAGE.EMAIL_INVALID'),
+            'phone.required' => Config::get('constants.VALIDATE_MESSAGE.PHONE_REQUIRED'),
+            'phone.numeric'   => Config::get('constants.VALIDATE_MESSAGE.PHONE_NUMERIC'),
             'password.required'  => Config::get('constants.VALIDATE_MESSAGE.PASSWORD_REQUIRED'),
         ];
     }
