@@ -27,8 +27,8 @@ class RegisterUserRequest extends FormRequest
             }
             case 'POST': {
                 return [
-                    'name'                  => 'required|unique:users,name',
-                    'email'                 => 'required|email|unique:users,email',
+                    'name'                  => 'required|unique:customers,name',
+                    'email'                 => 'required|email|unique:customers,email',
                     'password'              => 'required|min:6|max:25',
                     'phone'                 => 'required|numeric',
                     'address'               => 'required',

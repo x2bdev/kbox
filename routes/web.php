@@ -447,32 +447,32 @@ Route::group(['prefix' => '/'], function () {
 
     Route::get('dang-ky.html', [
         'as' => 'taikhoan.register',
-        'uses' => 'Site\UserController@register',
+        'uses' => 'Site\CustomerController@register',
     ]);
 
     Route::post('dang-ky.html', [
         'as' => 'taikhoan.register.post',
-        'uses' => 'Site\UserController@registerUser',
+        'uses' => 'Site\CustomerController@registerUser',
     ]);
 
     Route::get('dang-nhap.html', [
         'as' => 'taikhoan.login',
-        'uses' => 'Site\UserController@login',
+        'uses' => 'Site\CustomerController@login',
     ]);
 
     Route::post('dang-nhap.html', [
         'as' => 'taikhoan.login.post',
-        'uses' => 'Site\UserController@loginUser',
+        'uses' => 'Site\CustomerController@loginUser',
     ]);
 
     Route::get('dang-xuat.html', [
         'as' => 'taikhoan.logout',
-        'uses' => 'Site\UserController@logout',
+        'uses' => 'Site\CustomerController@logout',
     ]);
 
     Route::get('tai-khoan', [
         'as' => 'taikhoan.profile',
-        'uses' => 'Site\UserController@profile',
+        'uses' => 'Site\CustomerController@profile',
     ]);
 
     Route::get('gioi-thieu.html', [
@@ -507,7 +507,8 @@ Route::group(['prefix' => '/'], function () {
     Route::get('dat-hang.html', [
         'as' => 'cart.paying',
         'uses' => 'Site\CartController@paying',
-    ])->middleware('existCart');
+    ])->middleware('existCart', 'authCustomerRoute');
+
     Route::post('dat-hang.html', [
         'as' => 'cart.paying',
         'uses' => 'Site\CartController@confirmPaying',

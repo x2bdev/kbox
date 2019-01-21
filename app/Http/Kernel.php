@@ -46,6 +46,11 @@ class Kernel extends HttpKernel
             'web',
             'authAdmin'
         ],
+
+        'authCustomerRoute' => [
+            'web',
+            'authCustomer'
+        ],
     ];
 
     /**
@@ -66,6 +71,7 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'authAdmin' => \App\Http\Middleware\AuthAdmin::class,
+        'authCustomer' => \App\Http\Middleware\CustomerAuthenticate::class,
         'existCart' => \App\Http\Middleware\CheckExistCart::class,
     ];
 }

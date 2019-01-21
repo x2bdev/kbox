@@ -16,6 +16,7 @@ class Customer extends Authenticatable
     protected           $route      = "customer";
     protected           $view       = "admin.pages.customer.";
     protected static    $key_cache  = "customers";
+    protected $guard = 'customer';
 
     /**
      * The attributes that are mass assignable.
