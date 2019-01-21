@@ -21,7 +21,6 @@ class ArticleService
 
     public function index(){
         $allArticle = $this->articleRepository->getAllArticleOnSite();
-
         return [
             'allArticle'    => $allArticle,
         ];

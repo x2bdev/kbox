@@ -80,18 +80,18 @@ class ArticleRepository extends EloquentRepository implements ArticleRepositoryI
     public function getAllArticleOnSite()
     {
         return $this->_model
-            ->join('categories_article', 'articles.category_article_id', '=', 'categories_article.id')
-            ->where('categories_article.status', "active")
-            ->where('articles.status', "active")
-            ->select(['articles.*'])
+            //->join('categories_article', 'articles.category_article_id', '=', 'categories_article.id')
+            //->where('categories_article.status', "active")
+            ->where('articles.status',"active")
+            ->select('articles.*')
             ->get();
     }
 
     public function getArticleByIdOnSite($id)
     {
         return $this->_model
-            ->join('categories_article', 'articles.category_article_id', '=', 'categories_article.id')
-            ->where('categories_article.status', "active")
+            //->join('categories_article', 'articles.category_article_id', '=', 'categories_article.id')
+            //->where('categories_article.status', "active")
             ->where('articles.status', "active")
             ->select(['articles.*'])
             ->where('articles.id', $id)
@@ -101,8 +101,8 @@ class ArticleRepository extends EloquentRepository implements ArticleRepositoryI
     public function getArticleViewHighestOnSite($id)
     {
         return $this->_model
-            ->join('categories_article', 'articles.category_article_id', '=', 'categories_article.id')
-            ->where('categories_article.status', "active")
+            //->join('categories_article', 'articles.category_article_id', '=', 'categories_article.id')
+            //->where('categories_article.status', "active")
             ->where('articles.status', "active")
             ->where('articles.id', '<>', $id)
             ->select(['articles.*'])

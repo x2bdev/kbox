@@ -6,12 +6,11 @@
         <section class="page-section breadcrumbs">
             <div class="container">
                 <div class="page-header">
-                    <h1>Blog Post Page</h1>
+                    <h1>Bài viết</h1>
                 </div>
                 <ul class="breadcrumb">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Shop</a></li>
-                    <li class="active">Blog With Left Sidebar</li>
+                    <li><a href="#">Trang chủ</a></li>
+                    <li class="active">Bài viết</li>
                 </ul>
             </div>
         </section>
@@ -23,178 +22,6 @@
                 <div class="row">
                     <!-- SIDEBAR -->
                     <aside class="col-md-3 sidebar" id="sidebar">
-                        <!-- widget search -->
-                        <div class="widget">
-                            <div class="widget-search">
-                                <input class="form-control" type="text" placeholder="Search">
-                                <button><i class="fa fa-search"></i></button>
-                            </div>
-                        </div>
-                        <!-- /widget search -->
-                        <!-- widget shop categories -->
-                        <div class="widget shop-categories">
-                            <h4 class="widget-title">Categories</h4>
-                            <div class="widget-content">
-                                <ul>
-                                    <li>
-                                        <span class="arrow"><i class="fa fa-angle-down"></i></span>
-                                        <a href="#">Woman</a>
-                                        <ul class="children">
-                                            <li>
-                                                <a href="#">Sweaters & Knits
-                                                    <span class="count">12</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Jackets & Coats
-                                                    <span class="count">12</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Denim
-                                                    <span class="count">12</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Pants
-                                                    <span class="count">12</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Shorts
-                                                    <span class="count">12</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <span class="arrow"><i class="fa fa-angle-down"></i></span>
-                                        <a href="#">Man</a>
-                                        <ul class="children">
-                                            <li>
-                                                <a href="#">Sweaters & Knits
-                                                    <span class="count">12</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Jackets & Coats
-                                                    <span class="count">12</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Denim
-                                                    <span class="count">12</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Pants
-                                                    <span class="count">12</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Shorts
-                                                    <span class="count">12</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <span class="arrow"><i class="fa fa-angle-down"></i></span>
-                                        <a href="#">Dress</a>
-                                        <ul class="children">
-                                            <li>
-                                                <a href="#">Sweaters & Knits
-                                                    <span class="count">12</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Jackets & Coats
-                                                    <span class="count">12</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Denim
-                                                    <span class="count">12</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Pants
-                                                    <span class="count">12</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Shorts
-                                                    <span class="count">12</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <span class="arrow"><i class="fa fa-angle-down"></i></span>
-                                        <a href="#">Top Sellers</a>
-                                        <ul class="children">
-                                            <li>
-                                                <a href="#">Sweaters & Knits
-                                                    <span class="count">12</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Jackets & Coats
-                                                    <span class="count">12</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Denim
-                                                    <span class="count">12</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Pants
-                                                    <span class="count">12</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Shorts
-                                                    <span class="count">12</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <span class="arrow"><i class="fa fa-angle-up"></i></span>
-                                        <a href="#">Accessories</a>
-                                        <ul class="children active">
-                                            <li>
-                                                <a href="#">Sweaters & Knits
-                                                    <span class="count">12</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Jackets & Coats
-                                                    <span class="count">12</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Denim
-                                                    <span class="count">12</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Pants
-                                                    <span class="count">12</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Shorts
-                                                    <span class="count">12</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Sale Off</a></li>
-                                </ul>
-                            </div>
-                        </div>
                         <!-- /widget shop categories -->
                         <!-- widget tabs -->
                         <div class="widget widget-tabs alt">
@@ -300,106 +127,6 @@
                             </div>
                         </div>
                         <!-- /widget tabs -->
-                        <!-- widget archives -->
-                        <div class="widget shop-categories">
-                            <h4 class="widget-title">Archives</h4>
-                            <div class="widget-content">
-                                <ul>
-                                    <li>
-                                        <span class="arrow"><i class="fa fa-angle-down"></i></span>
-                                        <a href="#">January<span class="count">12</span></a>
-                                        <ul class="children">
-                                            <li>
-                                                <a href="#">Sample Post Name</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Sample Post Name</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Sample Post Name</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <span class="arrow"><i class="fa fa-angle-down"></i></span>
-                                        <a href="#">February<span class="count">12</span></a>
-                                        <ul class="children">
-                                            <li>
-                                                <a href="#">Sample Post Name</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Sample Post Name</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Sample Post Name</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <span class="arrow"><i class="fa fa-angle-down"></i></span>
-                                        <a href="#">March<span class="count">12</span></a>
-                                        <ul class="children">
-                                            <li>
-                                                <a href="#">Sample Post Name</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Sample Post Name</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Sample Post Name</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <span class="arrow"><i class="fa fa-angle-down"></i></span>
-                                        <a href="#">April<span class="count">12</span></a>
-                                        <ul class="children">
-                                            <li>
-                                                <a href="#">Sample Post Name</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Sample Post Name</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Sample Post Name</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <span class="arrow"><i class="fa fa-angle-up"></i></span>
-                                        <a href="#">May<span class="count">12</span></a>
-                                        <ul class="children active">
-                                            <li>
-                                                <a href="#">Sample Post Name</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Sample Post Name</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Sample Post Name</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- /widget archive -->
-                        <!-- widget flickr feed -->
-                        <div class="widget widget-flickr-feed">
-                            <a class="btn btn-theme btn-title-more" href="#">See All</a>
-                            <h4 class="widget-title"><span>Flickr Images</span></h4>
-                            <ul>
-                                <li><a href="#"><img src=" {{ asset('public/frontend/assets/img/preview/flickr/flickr-feed-8.jpg') }}" alt="//"></a></li>
-                                <li><a href="#"><img src=" {{ asset('public/frontend/assets/img/preview/flickr/flickr-feed-9.jpg') }}" alt="//"></a></li>
-                                <li><a href="#"><img src=" {{ asset('public/frontend/assets/img/preview/flickr/flickr-feed-10.jpg') }}" alt="//"></a></li>
-                                <li><a href="#"><img src=" {{ asset('public/frontend/assets/img/preview/flickr/flickr-feed-11.jpg') }}" alt="//"></a></li>
-                                <li><a href="#"><img src=" {{ asset('public/frontend/assets/img/preview/flickr/flickr-feed-12.jpg') }}" alt="//"></a></li>
-                                <li><a href="#"><img src=" {{ asset('public/frontend/assets/img/preview/flickr/flickr-feed-13.jpg') }}" alt="//"></a></li>
-                                <li><a href="#"><img src=" {{ asset('public/frontend/assets/img/preview/flickr/flickr-feed-14.jpg') }}" alt="//"></a></li>
-                                <li><a href="#"><img src=" {{ asset('public/frontend/assets/img/preview/flickr/flickr-feed-15.jpg') }}" alt="//"></a></li>
-                            </ul>
-                        </div>
-                        <!-- /widget flickr feed -->
                         <!-- widget tag cloud -->
                         <div class="widget widget-tag-cloud">
                             <a class="btn btn-theme btn-title-more" href="#">See All</a>
@@ -410,181 +137,45 @@
                                 <li><a href="#">Top Sellers</a></li>
                                 <li><a href="#">E commerce</a></li>
                                 <li><a href="#">Hot Deals</a></li>
-                                <li><a href="#">Supplier</a></li>
-                                <li><a href="#">Shop</a></li>
-                                <li><a href="#">Theme</a></li>
-                                <li><a href="#">Website</a></li>
-                                <li><a href="#">Isamercan</a></li>
-                                <li><a href="#">Themeforest</a></li>
                             </ul>
                         </div>
                         <!-- /widget tag cloud -->
-                        <!-- widget -->
-                        <div class="widget">
-                            <a class="btn btn-theme btn-title-more btn-icon-left" href="#"><i class="fa fa-twitter"></i>Follow Us</a>
-                            <h4 class="widget-title"><span>Twitter</span></h4>
-                            <div class="recent-tweets">
-                                <div class="media">
-                                    <span class="media-object pull-left"><i class="fa fa-twitter"></i></span>
-                                    <div class="media-body">
-                                        <p><a href="#">@twittername</a> At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-                                        <small>1 minute ago</small>
-                                    </div>
-                                </div>
-                                <div class="media">
-                                    <span class="media-object pull-left"><i class="fa fa-twitter"></i></span>
-                                    <div class="media-body">
-                                        <p><a href="#">@twittername</a> At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-                                        <small>1 minute ago</small>
-                                    </div>
-                                </div>
-                                <div class="media">
-                                    <span class="media-object pull-left"><i class="fa fa-twitter"></i></span>
-                                    <div class="media-body">
-                                        <p><a href="#">@twittername</a> At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-                                        <small>1 minute ago</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /widget -->
                     </aside>
                     <!-- /SIDEBAR -->
                     <!-- CONTENT -->
                     <div class="col-md-9 content" id="content">
+                        @if(count($articles) > 0)
+                            @foreach($articles as $key => $value)
+                            <article class="post-wrap">
+                                <div class="post-media">
+                                    <a href="{{ url('/bai-viet/'.$value->slug.'-'.$value->id.'.html') }}"" data-gal="prettyPhoto"><img src="{{ asset('public/upload/images/article/' . $value->image) }}" alt="{{ $value->name }}"></a>
+                                </div>
+                                <div class="post-header">
+                                    <h2 class="post-title"><a href="#">{{ $value->name }}</a></h2>
+                                    <div class="post-meta">
+                                        Đăng ngày: {{ date('d/m/Y',strtotime($value->updated_at))}}
+                                    </div>
+                                </div>
+                                <div class="post-body">
+                                    <div class="post-excerpt">
+                                        <p>
+                                        {{ $value->description }}
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="post-footer">
+                                    <span class="post-read-more"><a href="{{ url('/bai-viet/'.$value->slug.'-'.$value->id.'.html') }}" class="btn btn-theme btn-theme-transparent btn-icon-left"><i class="fa fa-file-text-o"></i>Xem chi tiết</a></span>
+                                </div>
+                            </article>
+                            @endforeach
+                        @else
+                            <div class="col-lg-12 col-xl-12 col-md-12">
+                                <h2 class="text-center"> Không có bài viết</h2>
+                            </div>
+
+                        @endif
 
                         <!-- Blog posts -->
-                        <article class="post-wrap">
-                            <div class="post-media">
-                                <a href="assets/img/preview/blog/blog-post-1.jpg') }}" data-gal="prettyPhoto"><img src=" {{ asset('public/frontend/assets/img/preview/blog/blog-post-1.jpg') }}" alt=""></a>
-                            </div>
-                            <div class="post-header">
-                                <h2 class="post-title"><a href="#">Sample Post With Featured Image</a></h2>
-                                <div class="post-meta">By <a href="#">author name here</a> / 6th June 2014 / in <a href="#">Design</a>, <a href="#">Photography</a> / <a href="#">27 Comments</a> / 18 Likes / <a href="#">Share This Post</a></div>
-                            </div>
-                            <div class="post-body">
-                                <div class="post-excerpt">
-                                    <p>Fusce gravida interdum eros a mollis. Sed non lorem varius, volutpat nisl in, laoreet ante. Quisque suscipit mauris ipsum, eu mollis arcu laoreet vel. In posuere odio sed libero tincidunt commodo a vel ipsum. Mauris fringilla tellus aliquam, egestas sem in, malesuada nunc. Etiam condimentum felis odio, vel mollis est tempor non...</p>
-                                </div>
-                            </div>
-                            <div class="post-footer">
-                                <span class="post-read-more"><a href="#" class="btn btn-theme btn-theme-transparent btn-icon-left"><i class="fa fa-file-text-o"></i>Read more</a></span>
-                            </div>
-                        </article>
-                        <!-- / -->
-                        <article class="post-wrap">
-                            <div class="post-media">
-                                <div class="owl-carousel img-carousel">
-                                    <div class="item"><a href="assets/img/preview/blog/blog-post-2.jpg') }}" data-gal="prettyPhoto"><img class="img-responsive" src=" {{ asset('public/frontend/assets/img/preview/blog/blog-post-2.jpg') }}" alt=""/></a></div>
-                                    <div class="item"><a href="assets/img/preview/shop/blog-post-3.jpg') }}" data-gal="prettyPhoto"><img class="img-responsive" src=" {{ asset('public/frontend/assets/img/preview/blog/blog-post-3.jpg') }}" alt=""/></a></div>
-                                    <div class="item"><a href="assets/img/preview/shop/blog-post-4.jpg') }}" data-gal="prettyPhoto"><img class="img-responsive" src=" {{ asset('public/frontend/assets/img/preview/blog/blog-post-4.jpg') }}" alt=""/></a></div>
-                                    <div class="item"><a href="assets/img/preview/shop/blog-post-1.jpg') }}" data-gal="prettyPhoto"><img class="img-responsive" src=" {{ asset('public/frontend/assets/img/preview/blog/blog-post-1.jpg') }}" alt=""/></a></div>
-                                </div>
-                            </div>
-                            <div class="post-header">
-                                <h2 class="post-title"><a href="#">Standard Blog Post with Image Slider Header</a></h2>
-                                <div class="post-meta">By <a href="#">author name here</a> / 6th June 2014 / in <a href="#">Design</a>, <a href="#">Photography</a> / <a href="#">27 Comments</a> / 18 Likes / <a href="#">Share This Post</a></div>
-                            </div>
-                            <div class="post-body">
-                                <div class="post-excerpt">
-                                    <p>Fusce gravida interdum eros a mollis. Sed non lorem varius, volutpat nisl in, laoreet ante. Quisque suscipit mauris ipsum, eu mollis arcu laoreet vel. In posuere odio sed libero tincidunt commodo a vel ipsum. Mauris fringilla tellus aliquam, egestas sem in, malesuada nunc. Etiam condimentum felis odio, vel mollis est tempor non...</p>
-                                </div>
-                            </div>
-                            <div class="post-footer">
-                                <span class="post-read-more"><a href="#" class="btn btn-theme btn-theme-transparent btn-icon-left"><i class="fa fa-file-text-o"></i>Read more</a></span>
-                            </div>
-                        </article>
-                        <!-- / -->
-                        <article class="post-wrap">
-                            <div class="post-media">
-                                <img src=" {{ asset('public/frontend/assets/img/preview/blog/audio-post.jpg') }}" alt="">
-                            </div>
-                            <div class="post-header">
-                                <h2 class="post-title"><a href="#">Standard Sound Blog Post Header</a></h2>
-                                <div class="post-meta">By <a href="#">author name here</a> / 6th June 2014 / in <a href="#">Design</a>, <a href="#">Photography</a> / <a href="#">27 Comments</a> / 18 Likes / <a href="#">Share This Post</a></div>
-                            </div>
-                            <div class="post-body">
-                                <div class="post-excerpt">
-                                    <p>Fusce gravida interdum eros a mollis. Sed non lorem varius, volutpat nisl in, laoreet ante. Quisque suscipit mauris ipsum, eu mollis arcu laoreet vel. In posuere odio sed libero tincidunt commodo a vel ipsum. Mauris fringilla tellus aliquam, egestas sem in, malesuada nunc. Etiam condimentum felis odio, vel mollis est tempor non...</p>
-                                </div>
-                            </div>
-                            <div class="post-footer">
-                                <span class="post-read-more"><a href="#" class="btn btn-theme btn-theme-transparent btn-icon-left"><i class="fa fa-file-text-o"></i>Read more</a></span>
-                            </div>
-                        </article>
-                        <!-- / -->
-                        <article class="post-wrap">
-                            <div class="post-media">
-                                <a href="http://youtu.be/kg-clmeHBrM" data-gal="prettyPhoto" class="media-link">
-                                    <span class="btn btn-play"><i class="fa fa-play"></i></span>
-                                    <img src=" {{ asset('public/frontend/assets/img/preview/blog/blog-post-3.jpg') }}" alt="">
-                                </a>
-                            </div>
-                            <div class="post-header">
-                                <h2 class="post-title"><a href="#">Standard Video Blog Post Header</a></h2>
-                                <div class="post-meta">By <a href="#">author name here</a> / 6th June 2014 / in <a href="#">Design</a>, <a href="#">Photography</a> / <a href="#">27 Comments</a> / 18 Likes / <a href="#">Share This Post</a></div>
-                            </div>
-                            <div class="post-body">
-                                <div class="post-excerpt">
-                                    <p>Fusce gravida interdum eros a mollis. Sed non lorem varius, volutpat nisl in, laoreet ante. Quisque suscipit mauris ipsum, eu mollis arcu laoreet vel. In posuere odio sed libero tincidunt commodo a vel ipsum. Mauris fringilla tellus aliquam, egestas sem in, malesuada nunc. Etiam condimentum felis odio, vel mollis est tempor non...</p>
-                                </div>
-                            </div>
-                            <div class="post-footer">
-                                <span class="post-read-more"><a href="#" class="btn btn-theme btn-theme-transparent btn-icon-left"><i class="fa fa-file-text-o"></i>Read more</a></span>
-                            </div>
-                        </article>
-                        <!-- / -->
-                        <article class="post-wrap">
-                            <div class="post-media">
-                                <blockquote>
-                                    <p>Fusce gravida interdum eros a mollis. Sed non lorem varius, volutpat nisl in, laoreet ante. Quisque suscipit mauris ipsum, eu mollis arcu laoreet vel. </p>
-                                    <footer><cite title="Source Title">ISA MERCAN</cite></footer>
-                                </blockquote>
-                            </div>
-                            <div class="post-header">
-                                <div class="post-meta">By <a href="#">author name here</a> / 6th June 2014 / in <a href="#">Design</a>, <a href="#">Photography</a> / <a href="#">27 Comments</a> / 18 Likes / <a href="#">Share This Post</a></div>
-                            </div>
-                            <div class="post-footer">
-                                <span class="post-read-more"><a href="#" class="btn btn-theme btn-theme-transparent btn-icon-left"><i class="fa fa-file-text-o"></i>Read more</a></span>
-                            </div>
-                        </article>
-                        <!-- / -->
-                        <article class="post-wrap">
-                            <div class="post-media">
-                                <!-- 16:9 aspect ratio -->
-                                <div class="embed-responsive embed-responsive-16by9">
-                                    <iframe class="embed-responsive-item" src="//player.vimeo.com/video/113101251"></iframe>
-                                </div>
-                            </div>
-                            <div class="post-header">
-                                <h2 class="post-title"><a href="#">Standard Vimeo Video Blog Post Header</a></h2>
-                                <div class="post-meta">By <a href="#">author name here</a> / 6th June 2014 / in <a href="#">Design</a>, <a href="#">Photography</a> / <a href="#">27 Comments</a> / 18 Likes / <a href="#">Share This Post</a></div>
-                            </div>
-                            <div class="post-body">
-                                <div class="post-excerpt">
-                                    <p>Fusce gravida interdum eros a mollis. Sed non lorem varius, volutpat nisl in, laoreet ante. Quisque suscipit mauris ipsum, eu mollis arcu laoreet vel. In posuere odio sed libero tincidunt commodo a vel ipsum. Mauris fringilla tellus aliquam, egestas sem in, malesuada nunc. Etiam condimentum felis odio, vel mollis est tempor non...</p>
-                                </div>
-                            </div>
-                            <div class="post-footer">
-                                <span class="post-read-more"><a href="#" class="btn btn-theme btn-theme-transparent btn-icon-left"><i class="fa fa-file-text-o"></i>Read more</a></span>
-                            </div>
-                        </article>
-
-                        <!-- /Blog posts -->
-
-                        <!-- Pagination -->
-                        <div class="pagination-wrapper">
-                            <ul class="pagination">
-                                <li class="disabled"><a href="#"><i class="fa fa-angle-double-left"></i> Previous</a></li>
-                                <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">Next <i class="fa fa-angle-double-right"></i></a></li>
-                            </ul>
-                        </div>
-                        <!-- /Pagination -->
-
                     </div>
                     <!-- /CONTENT -->
 

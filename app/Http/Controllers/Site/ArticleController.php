@@ -23,25 +23,21 @@ class ArticleController extends Controller
     }
 
     public function index() {
-//        $variables = $this->_articleService->index();
-
-
-        return view('frontend.pages.article.list_article');
-//        return view('frontend.pages.article.list_article',[
-//            'articles'        => $variables['allArticle'],
-//        ]);
+        $variables = $this->_articleService->index();
+        return view('frontend.pages.article.list_article',[
+            'articles'        => $variables['allArticle'],
+        ]);
     }
 
     public function show($slug,$id) {
-//        $variables = $this->_articleService->showDetail($slug,$id);
+        $variables = $this->_articleService->showDetail($slug,$id);
         $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
 
-        return view('frontend.pages.article.detail_article');
-//        return view('frontend.pages.article.detail_article',[
-//            'articleSingle'         => $variables['articleSingle'],
-//            'articleList'           => $variables['articleList'],
-//            'url'                   => $url
-//        ]);
+        return view('frontend.pages.article.detail_article',[
+           'articleSingle'         => $variables['articleSingle'],
+           'articleList'           => $variables['articleList'],
+           'url'                   => $url
+        ]);
     }
 //
 //    public function search(Request $request) {
