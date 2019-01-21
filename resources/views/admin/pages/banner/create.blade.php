@@ -34,7 +34,7 @@
                             <label class="col-md-2 control-label"></label>
                             <div class="col-md-10">
                                 <strong style="color: red">Kích thước
-                                    chuẩn : ( Slider: 870x450px ) - ( Banner: 570x250px )</strong>
+                                    chuẩn : ( Slider: 1700px - 500px ) - ( Banner: 555px - 190px )</strong>
                             </div>
                         </div>
                         <div class="form-group">

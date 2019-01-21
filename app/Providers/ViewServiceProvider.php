@@ -8,6 +8,8 @@
 
 namespace App\Providers;
 
+use App\Models\Article;
+use App\Models\CategoryArticle;
 use App\Models\Setting;
 use App\Models\Product;
 use App\Models\CategoryProduct;
@@ -59,24 +61,37 @@ class ViewServiceProvider extends ServiceProvider
 //            $view->with('seoConfig', $data);
 //        });
 //
-//        view()->composer('*', function ($view) {
-//            $categoriesFromDB = CategoryProduct::where('status', 'active')->where('id', '>', '0')->where('level', '<=', '2')->get();
-//            $categoriesLevel1 = [];
-//            $categoriesLevel2 = [];
-//            foreach ($categoriesFromDB as $key => $value) {
-//                if ($value->level == 1) {
-//                    $categoriesLevel1[$value->id] = $value;
-//                } elseif ($value->level == 2) {
-//                    $categoriesLevel2[$value->parent][] = $value;
-//                }
-//            }
-//            $view->with(['categoriesHeaderLv1' => $categoriesLevel1, 'categoriesHeaderLv2' => $categoriesLevel2]);
-//        });
+        view()->composer('*', function ($view) {
+            $categoriesLv1 = CategoryProduct::where('status', 'active')->where('id', '>', '0')->withoutGlobalScope('confirm')->where('confirm_action', null)->where('level', '=', '1')->get();
+
+            $view->with(['categoriesHeaderLv1' => $categoriesLv1]);
+        });
 //
         view()->composer('*', function ($view) {
             $attributeConfigItem = Setting::where('option_name', 'setting_attribute')->first();
             $data = json_decode($attributeConfigItem->option_value);
             $view->with('attributeConfig', $data);
+        });
+
+        view()->composer('frontend.blocks.box.sidebar_left_article', function ($view) {
+            $categoriesArticle = CategoryArticle::where('status', 'active')->where('level', '1')->get();
+            $articleNew = Article::join('categories_article', 'articles.category_article_id', '=', 'categories_article.id')
+                ->where('categories_article.status',"active")
+                ->where('articles.status', "active")
+                ->select(['articles.*'])
+                ->withoutGlobalScope('confirm')
+                ->where('articles.confirm_action', null)
+                ->orderBy('articles.created_at', 'desc')
+                ->get(5);
+            $articleViewHigher = Article::join('categories_article', 'articles.category_article_id', '=', 'categories_article.id')
+                ->where('categories_article.status',"active")
+                ->where('articles.status', "active")
+                ->select(['articles.*'])
+                ->withoutGlobalScope('confirm')
+                ->where('articles.confirm_action', null)
+                ->orderBy('articles.view', 'desc')
+                ->get(5);
+            $view->with(['categoriesArticle' => $categoriesArticle, 'articleNew' => $articleNew, 'articleViewHigher' => $articleViewHigher]);
         });
     }
 

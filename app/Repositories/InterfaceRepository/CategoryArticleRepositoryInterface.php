@@ -27,5 +27,9 @@ interface CategoryArticleRepositoryInterface
 
     public function mapsDataDefault($data);
 
+    public function getAllCategoryArticleOnSite();
+
+    public function getCategoryArticleByIdOnSite($id);
+
     public function lists();
 }

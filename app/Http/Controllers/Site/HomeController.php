@@ -24,7 +24,6 @@ class HomeController extends Controller
 
     public function index()
     {
-        Session::forget("product_in_cart");
         $variables = $this->_homeService->showIndex();
 
         return view('frontend.pages.home.index', [

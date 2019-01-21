@@ -18,7 +18,8 @@ class BilldetailRepository extends EloquentRepository implements BillDetailRepos
         return BillDetail::class;
     }
 
-    public function getBillDetail($params) {
+    public function getBillDetail($params)
+    {
         $model = $this->_model->where('id', '>', 0);
 
         if ($params['q'] != '') {
@@ -40,6 +41,16 @@ class BilldetailRepository extends EloquentRepository implements BillDetailRepos
 
     public function getBillDetailByBillId($id)
     {
-        return $this->_model->where('bill_id',$id)->get();
+        return $this->_model->where('bill_id', $id)->get();
+    }
+
+    public function getBestSellProductOnSite()
+    {
+        return $this->_model
+            ->sum('qty')
+            ->groupBy('product_id')
+            ->orderBy('qty', 'desc')
+            ->pluck()
+            ->take(3);
     }
 }

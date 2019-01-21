@@ -25,5 +25,7 @@
 <script src="{{ asset('public/frontend/assets/plugins/iesupport/respond.min.js') }}"></script>
 <![endif]-->
 
+<link href="https://fonts.googleapis.com/css?family=Niramit:700|Varela+Round&amp;subset=vietnamese" rel="stylesheet">
+
 <link rel="stylesheet" href="{{ asset('public/frontend/assets/css/styleCustom.css') }}">
 

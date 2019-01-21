@@ -31,6 +31,13 @@
                     </div>
                     <div class="x_content">
                         <div class="form-group">
+                            <label class="col-md-2 control-label"></label>
+                            <div class="col-md-10">
+                                <strong style="color: red">Kích thước
+                                    chuẩn : ( Slider: 1700px - 500px ) - ( Banner: 555px - 190px )</strong>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label class="col-md-2 control-label">Tên banner <span class="required">*</span></label>
                             <div class="col-md-10">
                                 {!! Form::text('name', $data->name, array('class' => 'form-control', 'placeholder' => 'Tên banner')) !!}

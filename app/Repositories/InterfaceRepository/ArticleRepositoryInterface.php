@@ -25,6 +25,8 @@ interface ArticleRepositoryInterface
 
     public function getAllArticleOnSite();
 
+    public function getAllArticleByCategoryOnSite($id);
+
     public function getArticleByIdOnSite($id);
 
     public function getArticleViewHighestOnSite($id);

@@ -80,32 +80,52 @@ class ArticleRepository extends EloquentRepository implements ArticleRepositoryI
     public function getAllArticleOnSite()
     {
         return $this->_model
-            //->join('categories_article', 'articles.category_article_id', '=', 'categories_article.id')
-            //->where('categories_article.status', "active")
-            ->where('articles.status',"active")
+            ->join('categories_article', 'articles.category_article_id', '=', 'categories_article.id')
+            ->where('categories_article.status', "active")
+            ->where('articles.status', "active")
             ->select('articles.*')
-            ->get();
+            ->withoutGlobalScope('confirm')
+            ->where('articles.confirm_action', null)
+            ->paginate(1);
+    }
+
+    public function getAllArticleByCategoryOnSite($id)
+    {
+        return $this->_model
+            ->join('categories_article', 'articles.category_article_id', '=', 'categories_article.id')
+            ->where('categories_article.status', "active")
+            ->where('articles.status', "active")
+            ->select(['articles.*'])
+            ->withoutGlobalScope('confirm')
+            ->where('articles.confirm_action', null)
+            ->where('articles.category_article_id', $id)
+            ->orderBy('articles.created_at', 'desc')
+            ->paginate(3);
     }
 
     public function getArticleByIdOnSite($id)
     {
         return $this->_model
-            //->join('categories_article', 'articles.category_article_id', '=', 'categories_article.id')
-            //->where('categories_article.status', "active")
+            ->join('categories_article', 'articles.category_article_id', '=', 'categories_article.id')
+            ->where('categories_article.status', "active")
             ->where('articles.status', "active")
             ->select(['articles.*'])
             ->where('articles.id', $id)
+            ->withoutGlobalScope('confirm')
+            ->where('articles.confirm_action', null)
             ->first();
     }
 
     public function getArticleViewHighestOnSite($id)
     {
         return $this->_model
-            //->join('categories_article', 'articles.category_article_id', '=', 'categories_article.id')
-            //->where('categories_article.status', "active")
+            ->join('categories_article', 'articles.category_article_id', '=', 'categories_article.id')
+            ->where('categories_article.status', "active")
             ->where('articles.status', "active")
             ->where('articles.id', '<>', $id)
             ->select(['articles.*'])
+            ->withoutGlobalScope('confirm')
+            ->where('articles.confirm_action', null)
             ->get();
     }
 }

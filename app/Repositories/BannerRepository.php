@@ -79,11 +79,21 @@ class BannerRepository extends EloquentRepository implements BannerRepositoryInt
 
     public function getBannerOnSite()
     {
-        return $this->_model->where('status', "active")->orderBy('created_at', 'desc')->where('type', 0)->get();
+        return $this->_model
+            ->withoutGlobalScope('confirm')
+            ->where('confirm_action', null)
+            ->where('status', "active")
+            ->orderBy('created_at', 'desc')
+            ->where('type', 0)->get();
     }
 
     public function getSliderOnSite()
     {
-        return $this->_model->where('status', "active")->where('type', 1)->get();
+        return $this->_model
+            ->withoutGlobalScope('confirm')
+            ->where('confirm_action', null)
+            ->where('status', "active")
+            ->where('type', 1)
+            ->get();
     }
 }

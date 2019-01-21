@@ -16,6 +16,9 @@ interface BillDetailRepositoryInterface
      * @return mixed
      */
     public function getBillDetail($params);
+
     public function getBillDetailByBillId($id);
+
+    public function getBestSellProductOnSite();
 
 }

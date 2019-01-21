@@ -1,3 +1,9 @@
+body,h1,h2,h3,h4,h5,h6{
+    font-family: 'Niramit', sans-serif; !important;
+}
+p{
+    font-family: 'Varela Round', sans-serif; !important;
+}
 .thumbnail-img{
     height: 262px !important;
     width: 262px;
@@ -133,4 +139,34 @@
 }
 .help-block {
     color: red !important;
+}
+.pp_social{
+    display: none !important;
+}
+.btn-add-wishlist{
+    opacity: unset !important;
+}
+.active-wishlist{
+    background-color: #232323;
+    color: #ffffff;
+}
+.image-s-small-frames{
+    height: 70px !important;
+    width: 70px !important;
+    background-color: #fafafa;
+    display:table-cell;
+    vertical-align:middle;
+}
+.image-s-small-frames img{
+    max-width: 70px;
+    max-height: 70px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    display: block !important;
+}
+.pagination>li>a, .pagination>li>span{
+    float: unset !important;
+}
+li.page-item.active{
+    margin-right: 8px !important;
 }

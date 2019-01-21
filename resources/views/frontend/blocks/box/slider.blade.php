@@ -3,7 +3,7 @@
     <div class="container full-width">
         <div class="main-slider">
             <div class="owl-carousel" id="main-slider">
-                @foreach($banner as $key => $value)
+                @foreach($slider as $key => $value)
                     <div class="item slide1">
                         {{--1700x500--}}
                         <a href="#"><img class="slide-img"

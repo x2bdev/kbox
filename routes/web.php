@@ -429,10 +429,13 @@ Route::group(['prefix' => '/'], function () {
         'as' => 'baiviet.list',
         'uses' => 'Site\ArticleController@index',
     ]);
-
     Route::get('bai-viet/{slug}-{id}.html', [
         'as' => 'baiviet.detail',
         'uses' => 'Site\ArticleController@show',
+    ])->where(['slug' => '[0-9a-zA-Z-]+', 'id' => '[0-9]+']);
+    Route::get('loai-bai-viet/{slug}-{id}.html', [
+        'as' => 'baiviet.catetoryList',
+        'uses' => 'Site\ArticleController@showArticleByCatetory',
     ])->where(['slug' => '[0-9a-zA-Z-]+', 'id' => '[0-9]+']);
 
     Route::get('tim-kiem.html', [

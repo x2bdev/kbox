@@ -9,18 +9,22 @@
 namespace App\Services\Site;
 
 use App\Repositories\InterfaceRepository\ArticleRepositoryInterface;
+use App\Repositories\InterfaceRepository\CategoryArticleRepositoryInterface;
 
 class ArticleService
 {
     private $articleRepository;
+    private $categoryArticleRepository;
 
-    public function __construct(ArticleRepositoryInterface $articleRepository)
+    public function __construct(ArticleRepositoryInterface $articleRepository, CategoryArticleRepositoryInterface $categoryArticleRepository)
     {
         $this->articleRepository = $articleRepository;
+        $this->categoryArticleRepository = $categoryArticleRepository;
     }
 
     public function index(){
         $allArticle = $this->articleRepository->getAllArticleOnSite();
+
         return [
             'allArticle'    => $allArticle,
         ];
@@ -45,6 +49,19 @@ class ArticleService
             'articleSingle'     => $articleSingle,
             'articleList'       => $articleList,
         ];
+    }
+
+    public function showArticleByCatetory($slug, $id)
+    {
+        $category = $this->categoryArticleRepository->getCategoryArticleByIdOnSite($id);
+        if ($category->slug !== $slug || $category == null) {
+            abort(404);
+        } else {
+            $articleList = $this->articleRepository->getAllArticleByCategoryOnSite($category->id);
+            return [
+                'allArticle' => $articleList,
+            ];
+        }
     }
 //
 //    public function searchProductByKeyword($keyword) {

@@ -2,16 +2,19 @@
     <div class="header-wrapper">
         <div class="container">
 
-            <!-- Logo -->
+            <!-- Logo 255x51 -->
             <div class="logo">
-                <a href="{{ url('/') }}"><img src="{{ asset('public/frontend/assets/img/logo-bella-shop.png') }}" alt="Bella Shop"/></a>
+                <a href="{{ url('/') }}"><img src="{{ asset('public/frontend/assets/img/logo.png') }}"
+                                              alt="Bella Shop"/></a>
             </div>
             <!-- /Logo -->
 
             <!-- Header search -->
             <div class="header-search">
-                <input class="form-control" type="text" placeholder="What are you looking?"/>
-                <button><i class="fa fa-search"></i></button>
+                <form action="" method="get">
+                    <input class="form-control" name="q" type="text" placeholder="Nhập từ khóa tìm kiếm?"/>
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                </form>
             </div>
             <!-- /Header search -->
         <?php
@@ -28,7 +31,8 @@
                     <a href="wishlist.html" class="btn btn-theme-transparent hidden-xs hidden-sm"><i
                                 class="fa fa-heart"></i></a>
                     <a href="#" class="btn btn-theme-transparent" data-toggle="modal" data-target="#popup-cart"><i
-                                class="fa fa-shopping-cart"></i> <span class="hidden-xs span-count-item"> {{ isset($count)?$count:0 }} item(s)</span>
+                                class="fa fa-shopping-cart"></i> <span class="hidden-xs span-count-item"> {{ isset($count)?$count:0 }}
+                            item(s)</span>
                         <i class="fa fa-angle-down"></i></a>
                     <!-- Mobile menu toggle button -->
                     <a href="#" class="menu-toggle btn btn-theme-transparent"><i class="fa fa-bars"></i></a>

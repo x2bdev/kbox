@@ -102,4 +102,23 @@ class CategoryArticleRepository extends EloquentRepository implements CategoryAr
             'description' => isset($data['description']) ? $data['description'] : null
         );
     }
+
+    public function getAllCategoryArticleOnSite()
+    {
+        return $this->_model
+            ->withoutGlobalScope('confirm')
+            ->where('confirm_action', null)
+            ->where('status', "active")
+            ->where('level', 1)
+            ->get();
+    }
+
+    public function getCategoryArticleByIdOnSite($id){
+        return $this->_model
+            ->withoutGlobalScope('confirm')
+            ->where('confirm_action', null)
+            ->where('status',"active")
+            ->where('id',$id)
+            ->first();
+    }
 }

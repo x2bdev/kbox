@@ -22,13 +22,6 @@
                             <h4 class="caption-title"><a
                                         href="{{ url('/san-pham/'.$value->slug.'-'.$value->id.'.html') }}">{{ $value->name  }}</a>
                             </h4>
-                            <div class="rating">
-                                <span class="star"></span><!--
-                                            --><span class="star active"></span><!--
-                                            --><span class="star active"></span><!--
-                                            --><span class="star active"></span><!--
-                                            --><span class="star active"></span>
-                            </div>
                             <div class="price">
                                 <ins>{{ number_format($value->price)  }} đ</ins>
                                 @if($value->price !== $value->price_old)
@@ -36,7 +29,7 @@
                                 @endif
                             </div>
                             <div class="buttons">
-                                <a class="btn btn-theme btn-theme-transparent btn-wish-list" href="#"><i
+                                <a class="btn btn-theme btn-theme-transparent btn-wish-list btn-add-wishlist" href="#"><i
                                             class="fa fa-heart"></i></a><!--
                                             --><a class="btn btn-theme btn-theme-transparent btn-add-cart {{ $value->id }}" href="#">Thêm vào giỏ</a><!--
                                             -->
