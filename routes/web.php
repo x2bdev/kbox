@@ -291,6 +291,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['authAdminRoute']], function
     Route::resource('article', 'Admin\ArticleController');
 
     // Category Product
+    Route::get('category-product/move-node', [
+        'as' => 'category-product.move-node',
+        'uses' => 'Admin\CategoryProductController@moveNode',
+    ]);
+
     Route::get('category-product/status', [
         'as' => 'category-product.status',
         'uses' => 'Admin\CategoryProductController@changeStatus',

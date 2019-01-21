@@ -283,8 +283,7 @@ class CategoryArticleService
 
     public function moveNode($request) {
         $this->nestedRepository->moveItem($request);
-        return redirect()
-            ->route('category-article.index')
-            ->with(['noticeMessage' => Config::get('constants.SUCCESSFUL_MESSAGE.EDIT')]);
+        echo json_encode(array('status' => 1, 'msg' => 'Chuyển vị trí thành công.'));
+        die();
     }
 }

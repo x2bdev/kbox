@@ -94,10 +94,6 @@ function string_to_slug(str) {
     return str;
 }
 
-function numberWithCommas(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
-
 function addFavorite(id) {
     var objProductFavorite = [];
     if (localStorage.getItem("favoriteProduct")) {

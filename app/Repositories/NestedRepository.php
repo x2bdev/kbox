@@ -469,10 +469,9 @@ class NestedRepository
     public function moveItem($arrParams = null, $options = null)
     {
         if ($options == null) {
-            $arrParams['id'] = (int)$arrParams['id'];
-            if ($arrParams['id'] > 0) {
-                if ($arrParams['type'] == 'up') $this->moveUp($arrParams['id']);
-                if ($arrParams['type'] == 'down') $this->moveDown($arrParams['id']);
+            if ($arrParams->id > 0) {
+                if ($arrParams->type == 'up') $this->moveUp($arrParams->id);
+                if ($arrParams->type == 'down') $this->moveDown($arrParams->id);
                 return true;
             }
         }

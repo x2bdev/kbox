@@ -152,4 +152,8 @@ class CategoryProductController extends Controller
     public function changeStatus(Request $request) {
         return $this->categoryProductService->changeStatus($request);
     }
+
+    public function moveNode(Request $request){
+        return $this->categoryProductService->moveNode($request);
+    }
 }
