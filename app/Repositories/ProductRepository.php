@@ -8,6 +8,7 @@
 
 namespace App\Repositories;
 
+use DB;
 use App\Models\Product;
 use App\Repositories\InterfaceRepository\ProductRepositoryInterface;
 
@@ -220,5 +221,17 @@ class ProductRepository extends EloquentRepository implements ProductRepositoryI
                     ->withoutGlobalScope('confirm')
                     ->where('products.confirm_action', null)
                     ->get();
+    }
+
+    public function getBestSellerProduct()
+    {
+        return $this->_model
+            ->withoutGlobalScope('confirm')
+            ->join('bill_details', 'products.id', '=', 'bill_details.product_id')
+            ->where('products.confirm_action', null)
+            ->select(DB::raw('products.*, COUNT(products.id) as total'))
+            ->groupBy('products.id')
+            ->orderBy('total', 'desc')
+            ->paginate(3);
     }
 }

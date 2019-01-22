@@ -33,6 +33,7 @@ class HomeService
 
         $productViewHighest = $this->productRepository->getProductViewHighestOnSite();
         $productNew = $this->productRepository->getProductNewOnSite();
+        $productBestSeller = $this->productRepository->getBestSellerProduct();
 
 //        $top3ProductSell = $this->billDetailRepository->getBestSellProductOnSite();
 //        dd($top3ProductSell);
