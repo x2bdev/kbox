@@ -65,3 +65,16 @@ function checkInputString($string){
 function checkStatusCheckBox($status){
     return (true == $status ? 1:0);
 }
+
+function showButtonMove($id, $type = 'up', $valChild, $valParent, $route) {
+    $icon = 'fa-arrow-up';
+    if($type != 'up'){
+        $type = 'down';
+        $icon = 'fa-arrow-down';
+    }
+    if($valChild == $valParent)
+        return "<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>";
+
+    return sprintf('<button type="button" onclick="javascript:moveNode(\'%s\', \'%s\', \'%s\')" class="btn btn-success"><i class="fa %s"></i></button>',
+        $id, $type, $route, $icon);
+}

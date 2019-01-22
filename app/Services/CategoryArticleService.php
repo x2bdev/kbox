@@ -280,4 +280,10 @@ class CategoryArticleService
 
         $this->categoryArticleRepository->update($dataUpdate, $nodeID);
     }
+
+    public function moveNode($request) {
+        $this->nestedRepository->moveItem($request);
+        echo json_encode(array('status' => 1, 'msg' => 'Chuyển vị trí thành công.'));
+        die();
+    }
 }

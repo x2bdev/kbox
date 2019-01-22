@@ -226,6 +226,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['authAdminRoute']], function
     Route::resource('banner', 'Admin\BannerController');
 
     // Category Article
+    Route::get('category-article/move-node', [
+        'as' => 'category-article.move-node',
+        'uses' => 'Admin\CategoryArticleController@moveNode',
+    ]);
+    
     Route::get('category-article/status', [
         'as' => 'category-article.status',
         'uses' => 'Admin\CategoryArticleController@changeStatus',
@@ -286,6 +291,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['authAdminRoute']], function
     Route::resource('article', 'Admin\ArticleController');
 
     // Category Product
+    Route::get('category-product/move-node', [
+        'as' => 'category-product.move-node',
+        'uses' => 'Admin\CategoryProductController@moveNode',
+    ]);
+
     Route::get('category-product/status', [
         'as' => 'category-product.status',
         'uses' => 'Admin\CategoryProductController@changeStatus',

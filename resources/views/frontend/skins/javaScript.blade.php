@@ -1,6 +1,7 @@
 <!-- JS Global -->
 <script src="{{ asset('public/frontend/assets/plugins/jquery/jquery-1.11.1.min.js') }}"></script>
 <script src="{{ asset('public/frontend/assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
+<script>var token = $('meta[name="csrf_token"]').attr("content");</script>
 <script src="{{ asset('public/frontend/assets/plugins/bootstrap-select/js/bootstrap-select.min.js') }}"></script>
 <script src="{{ asset('public/frontend/assets/plugins/superfish/js/superfish.min.js') }}"></script>
 <script src="{{ asset('public/frontend/assets/plugins/prettyphoto/js/jquery.prettyPhoto.js') }}"></script>

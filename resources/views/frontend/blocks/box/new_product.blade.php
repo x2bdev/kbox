@@ -29,9 +29,12 @@
                                 @endif
                             </div>
                             <div class="buttons">
-                                <a class="btn btn-theme btn-theme-transparent btn-wish-list btn-add-wishlist" href="#"><i
+                                <a class="btn btn-theme btn-theme-transparent btn-wish-list btn-add-wishlist"
+                                   href="javascript:void(0)" onclick="addFavorite('{{ $value->id }}')"><i
                                             class="fa fa-heart"></i></a><!--
-                                            --><a class="btn btn-theme btn-theme-transparent btn-add-cart {{ $value->id }}" href="#">Thêm vào giỏ</a><!--
+                                            --><a
+                                        class="btn btn-theme btn-theme-transparent btn-add-cart {{ $value->id }}"
+                                        href="#">Thêm vào giỏ</a><!--
                                             -->
                             </div>
                         </div>

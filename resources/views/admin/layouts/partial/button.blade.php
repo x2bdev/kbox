@@ -128,5 +128,32 @@
                 }
             });
         }
+
+        function moveNode(id, type, route) {
+            const url = route == 'category-article' ? 'category-article/move-node' : 'category-product/move-node';
+            bootbox.confirm('Các phần tử đã chọn sẽ bị <strong class="red">thay đổi vị trí</strong>', function (result) {
+                if (result) {
+                    $.ajax({
+                        url: url,
+                        headers: {'X-CSRF-TOKEN': token},
+                        data: {
+                            id: id,
+                            type: type
+                        },
+                        success: function (response) {
+                            response = $.parseJSON(response);
+                            if (response.status == 1) {
+                                successMsg(response.msg);
+                                setTimeout(function () {
+                                    window.location.reload();
+                                }, 1000);
+                            } else {
+                                errorMsg(response.msg);
+                            }
+                        }
+                    });
+                }
+            });
+        }
     </script>
 @endsection

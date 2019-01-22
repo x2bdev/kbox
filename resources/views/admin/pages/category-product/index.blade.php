@@ -1,3 +1,8 @@
+<?php
+use App\Repositories\CategoryProductRepository;
+$model = new CategoryProductRepository();
+?>
+
 @extends('admin.admin_master')
 
 @section('breadcrumbs_no_url')
@@ -47,6 +52,8 @@
                             <tr class="headings a-center">
                                 <th><input type="checkbox" id="check-all" class="flat"></th>
                                 <th class="column-title">Tên</th>
+                                <th class="column-title">Sắp xếp</th>
+                                <th class="column-title">Thứ tự</th>
                                 <th class="column-title">Chỉnh sửa</th>
                                 <th class="column-title">Tình trạng</th>
                                 <th class="column-title">Quản lý</th>
@@ -60,6 +67,16 @@
                             <tbody>
                             @if(!empty($categories))
                                 @foreach ( $categories as $category )
+                                    @php
+                                        $route = 'category-product';
+                                        $id = $category->id;
+                                        $childList[$category->parent][]	= $category->id;
+                                        $orderingValue	= array_search($category->id, $childList[$category->parent]);
+
+                                        $nodeParentInfo = $model->find($category->parent);
+                                        $btnMoveUp		= showButtonMove($id, 'up', $category->left, $nodeParentInfo->left + 1, $route);
+                                        $btnMoveDown	= showButtonMove($id, 'down', $category->right + 1, $nodeParentInfo->right, $route);
+                                    @endphp
                                     <tr class="pointer">
                                         <td class="a-center td-content">
                                             <input type="checkbox" class="flat" name="table_records" value="{{$category->id}}">
@@ -68,6 +85,12 @@
                                             $space = str_repeat('|-----', $category->level - 1);
                                         @endphp
                                         <td class="td-content">{{$space . $category->name}}</td>
+                                        <td class="td-content">
+                                            <?php echo $btnMoveUp . ' ' . $btnMoveDown?>
+                                        </td>
+                                        <td class="td-content">
+                                            <input style="width: 50px; text-align:center" id="ordering-<?php echo $category->id; ?>" type="text" class="center" name="ordering[<?php echo $category->id; ?>]" value="<?php echo $orderingValue + 1; ?>" />
+                                        </td>
                                         <td class="td-content">
                                             <p>{{$category->updated_at}}</p>
                                         </td>

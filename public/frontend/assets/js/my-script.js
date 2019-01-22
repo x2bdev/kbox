@@ -43,7 +43,7 @@ function errorMsg(msg){
         message: '',
     },{
         //setting
-        type: "error",
+        type: "danger",
         placement: {
             from: "bottom",
             align: "right"
@@ -93,6 +93,41 @@ function string_to_slug(str) {
 
     return str;
 }
+
+function addFavorite(id) {
+    var objProductFavorite = [];
+    if (localStorage.getItem("favoriteProduct")) {
+        objProductFavorite = JSON.parse(localStorage.getItem("favoriteProduct"));
+        let flag = objProductFavorite.filter((obj) => {
+            return obj.id === id
+        });
+        if (flag.length == 0) {
+            objProductFavorite.push({id});
+            localStorage.setItem("favoriteProduct", JSON.stringify(objProductFavorite));
+            successMsg("Thêm sản phẩm vào danh sách yêu thích thành công");
+            return;
+        }
+        errorMsg("Đã có sản phẩm này ở trong danh sách yêu thích");
+    }
+    else {
+        objProductFavorite.push({id: id});
+        localStorage.setItem("favoriteProduct", JSON.stringify(objProductFavorite));
+        successMsg("Thêm sản phẩm vào danh sách yêu thích thành công");
+    }
+}
+
+function removeWishlistProduct(id) {
+    var obj = JSON.parse(localStorage.getItem("favoriteProduct"));
+    console.log(obj, id);
+    var objProductFavorite = obj.filter((item) => {
+        return item.id != id;
+    });
+
+    localStorage.setItem("favoriteProduct", JSON.stringify(objProductFavorite));
+    successMsg("Xóa sản phẩm yêu thích thành công");
+    setTimeout("location.reload(true);", 1000);
+}
+
 
 $(document).ready(function() {
 

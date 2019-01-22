@@ -216,6 +216,9 @@ class ProductRepository extends EloquentRepository implements ProductRepositoryI
 
     public function getWishlistProduct($ids)
     {
-        return $this->_model->whereIn('id', $ids)->get();
+        return $this->_model->whereIn('id', $ids)
+                    ->withoutGlobalScope('confirm')
+                    ->where('products.confirm_action', null)
+                    ->get();
     }
 }
