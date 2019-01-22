@@ -25,13 +25,12 @@ class ProductController extends Controller
 
     public function index(Request $request)
     {
-//        $variables = $this->_productService->index($request);
+        $variables = $this->_productService->index($request);
 
 
-        return view('frontend.pages.product.list_product');
-//        return view('frontend.pages.product.list_product', [
-//            'products' => $variables['allProduct'],
-//        ]);
+        return view('frontend.pages.product.list_product', [
+            'products' => $variables['allProduct'],
+        ]);
     }
 
     public function show($slug, $id)
@@ -48,9 +47,9 @@ class ProductController extends Controller
 
     public function search(Request $request)
     {
-        $variables = $this->_productService->search($request);
+        $variables = $this->_productService->index($request);
 
-        return view('frontend.pages.product.search_product', [
+        return view('frontend.pages.product.list_product', [
             'products' => $variables['allProduct'],
             'query' => $variables['query'],
         ]);

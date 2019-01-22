@@ -10,7 +10,7 @@
                 </div>
                 <ul class="breadcrumb">
                     <li><a href="#">Trang chủ</a></li>
-                    <li><a href="#">Shop</a></li>
+                    <li><a href="#">Sản Phẩm</a></li>
                     <li class="active">Đặt hàng</li>
                 </ul>
             </div>
@@ -104,22 +104,22 @@
                 {!! Form::open(['method' => 'POST' ,'class' => '111','id' => 'form-info','url' => route('cart.paying')]) !!}
                 <div class="row">
                     <div class="col-md-4">
-                        <div class="form-group"><input class="form-control" name="full_name" type="text" value="{{ old('full_name') }}" placeholder="Họ và tên">
+                        <div class="form-group"><input class="form-control" name="full_name" type="text" value="{{ Auth::guard('customer')->user()->name }}" placeholder="Họ và tên">
                             {!! $errors->first('full_name', '<p class="help-block">:message</p>') !!}
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="form-group"><input class="form-control" name="phone" type="text" value="{{ old('phone') }}" placeholder="Số điện thoại">
+                        <div class="form-group"><input class="form-control" name="phone" type="text" value="{{ Auth::guard('customer')->user()->phone }}" placeholder="Số điện thoại">
                             {!! $errors->first('phone', '<p class="help-block">:message</p>') !!}
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="form-group"><input class="form-control" name="email" type="email" value="{{ old('email') }}" placeholder="Email">
+                        <div class="form-group"><input class="form-control" name="email" type="email" value="{{ Auth::guard('customer')->user()->email }}" placeholder="Email">
                             {!! $errors->first('email', '<p class="help-block">:message</p>') !!}
                         </div>
                     </div>
                     <div class="col-md-12">
-                        <div class="form-group"><input class="form-control" name="address" value="{{ old('address') }}" type="text"
+                        <div class="form-group"><input class="form-control" name="address" value="{{ Auth::guard('customer')->user()->address }}" type="text"
                                                        placeholder="Địa chỉ nhận hàng"></div>
                         {!! $errors->first('address', '<p class="help-block">:message</p>') !!}
                     </div>

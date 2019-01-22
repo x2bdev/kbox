@@ -11,7 +11,7 @@
 
             <!-- Header search -->
             <div class="header-search">
-                <form action="" method="get">
+                <form action="{{ url('tim-kiem.html') }}" method="get">
                     <input class="form-control" name="q" type="text" placeholder="Nhập từ khóa tìm kiếm?"/>
                     <button type="submit"><i class="fa fa-search"></i></button>
                 </form>

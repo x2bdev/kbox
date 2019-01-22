@@ -26,7 +26,7 @@
                                 <a class="pull-left media-link" href="#">
                                     <div class="image-s-small-frames">
                                         <img class="media-object"
-                                             src=" {{ asset('public/upload/images/article/'.$value->image) }}"
+                                             src="{{ asset('public/upload/images/article/'.$value->image) }}"
                                              alt="">
                                     </div>
                                 </a>

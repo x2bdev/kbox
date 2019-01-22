@@ -9,6 +9,7 @@
 namespace App\Http\Controllers\Site;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\MessageBag;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Site\LoginUserRequest;
@@ -24,25 +25,34 @@ class CustomerController extends Controller
         $this->customerService = $customerService;
     }
 
-    public function register() {
+    public function register()
+    {
         return view('frontend.pages.account.register');
     }
 
-    public function registerUser(RegisterUserRequest $request) {
+    public function registerUser(RegisterUserRequest $request)
+    {
         return $this->customerService->store($request);
     }
 
-    public function login() {
+    public function login()
+    {
+        Session::flash("pre-url", url()->previous());
         return view('frontend.pages.account.login');
     }
 
-    public function loginUser(LoginUserRequest $request) {
+    public function loginUser(LoginUserRequest $request)
+    {
         $data = [
             'phone' => $request->phone,
             'password' => $request->password,
         ];
 
         if (Auth::guard('customer')->attempt($data)) {
+            $pieces = explode("/", Session::get('pre-url'));
+            if ($pieces[count($pieces) - 1] === 'gio-hang.html') {
+                return redirect(route('cart.checkout'));
+            }
             return redirect(route('trang-chu'));
         } else {
             $errors = new MessageBag(['login_fail' => 'Số điện thoại hoặc mật khẩu không đúng']);
@@ -50,12 +60,14 @@ class CustomerController extends Controller
         }
     }
 
-    public function logout() {
+    public function logout()
+    {
         Auth::guard('customer')->logout();
         return redirect(route('taikhoan.login'));
     }
 
-    public function profile() {
+    public function profile()
+    {
         return view('frontend.pages.account.my_account');
     }
 }

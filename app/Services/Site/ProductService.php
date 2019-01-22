@@ -27,135 +27,62 @@ class ProductService
     public function index($request)
     {
         $sortQuery = $this->getSortQuery($request);
-
-        // $dataFilter[0] : color, [1] : price
-        $dataFilter = $this->getFilterProduct($request);
-        $colors = $dataFilter[0];
-        $price = $dataFilter[1];
-
-        if ($colors == null && $price == null) {
-            if ($sortQuery == []) {
-                $allProduct = $this->productRepository->getAllProductOnSite();
-            } else {
-                $allProduct = $this->productRepository->getAllProductAndSortOnSite($sortQuery);
-            }
-        } else {
-            if ($colors == null) {
-                if ($sortQuery == []) {
-                    $allProduct = $this->productRepository->getProductByFilterPriceOnSite($price);
-                } else {
-                    $allProduct = $this->productRepository->getProductByFilterPriceAndSortOnSite($price, $sortQuery);
-                }
-            } else if ($colors != null) {
-                $colorInDB = $this->productRepository->getListProduct();
-                $arrId = [];
-                foreach ($colorInDB as $key => $value) {
-                    $slugColor = AliasString($value);
-                    $arrColorRecord = explode('-', $slugColor);
-                    $arrColorRecord = array_merge($arrColorRecord, $colors);
-                    $arrColorRecord = array_unique($arrColorRecord);
-                    if (count($arrColorRecord) > 0) {
-                        $arrId[] = $key;
-                    }
-                }
-
-                if ($price == null) {
-                    if ($sortQuery == []) {
-                        $allProduct = $this->productRepository->getProductByFilterColorOnSite($arrId);
-                    } else {
-                        $allProduct = $this->productRepository->getProductByFilterColorAndSortOnSite($arrId, $sortQuery);
-                    }
-                } else {
-                    if ($sortQuery == []) {
-                        $allProduct = $this->productRepository->getProductByFilterColorAndPriceOnSite($arrId, $price);
-                    } else {
-                        $allProduct = $this->productRepository->getProductByFilterColorAndPriceAndSortOnSite($arrId, $price, $sortQuery);
-                    }
-                }
-            }
-        }
-
+        $query = isset($request->q) ? $request->q : "";
+        $priceFilter = $this->getFilterPriceProduct($request);
+        $params = [
+            'q' => $query,
+            'price' => $priceFilter,
+            'orderBy' => $sortQuery
+        ];
+        $allProduct = $this->productRepository->getAllProductOnSite($params);
 
         return [
             'allProduct' => $allProduct,
+            'query' => $query,
         ];
     }
 
-    public function getFilterProduct($request)
+    public function getFilterPriceProduct($request)
     {
-        $color = "";
-        $price = "";
-        if ($request->mau != null) {
-            $color = explode(',', $request->mau);
-        } else {
-            $color = $request->mau;
-        }
+        if ($request->filterPrice != null) {
+            $price = explode('-', $request->filterPrice);
 
-        if ($request->gia != null) {
-            $price = explode('-', $request->gia);
-        } else if ($request->gia == 'khac') {
+        } else if ($request->filterPrice == 'khac') {
             $price = [500, 10000];
         } else {
-            $price = $request->gia;
+            $price = '';
         }
-        $arrayDataFilter[] = $color;
-        $arrayDataFilter[] = $price;
+        $arrayDataFilter = $price;
 
         return $arrayDataFilter;
     }
 
     public function getSortQuery($request)
     {
+        if (!isset($request->sortP)) {
+            return '';
+        }
+
         $sort = $request->sortP;
         $sortQuery = [];
 
         if ($sort == "nameasc") {
-            $sortQuery[] = "name";
-            $sortQuery[] = "asc";
+            $sortQuery['key'] = "name";
+            $sortQuery['value'] = "asc";
         } elseif ($sort == "namedesc") {
-            $sortQuery[] = "name";
-            $sortQuery[] = "desc";
+            $sortQuery['key'] = "name";
+            $sortQuery['value'] = "desc";
         } elseif ($sort == "priceasc") {
-            $sortQuery[] = "price";
-            $sortQuery[] = "asc";
+            $sortQuery['key'] = "price";
+            $sortQuery['value'] = "asc";
         } elseif ($sort == "pricedesc") {
-            $sortQuery[] = "price";
-            $sortQuery[] = "desc";
+            $sortQuery['key'] = "price";
+            $sortQuery['value'] = "desc";
         }
 
         return $sortQuery;
     }
 
-    public function search($request)
-    {
-        $query = $request->q;
-        $sort = $request->sortP;
-        $sortQuery = [];
-
-        if ($sort == "nameasc") {
-            $sortQuery[] = "name";
-            $sortQuery[] = "asc";
-        } elseif ($sort == "namedesc") {
-            $sortQuery[] = "name";
-            $sortQuery[] = "desc";
-        } elseif ($sort == "priceasc") {
-            $sortQuery[] = "price";
-            $sortQuery[] = "asc";
-        } elseif ($sort == "pricedesc") {
-            $sortQuery[] = "price";
-            $sortQuery[] = "desc";
-        }
-        if ($sortQuery == []) {
-            $productSearch = $this->productRepository->searchProductByQueryOnsite($query);
-        } else {
-            $productSearch = $this->productRepository->searchProductByQueryAndSortOnSite($query, $sortQuery);
-        }
-
-        return [
-            'allProduct' => $productSearch,
-            'query' => $query,
-        ];
-    }
 
     public function showDetail($slug, $id)
     {
@@ -196,8 +123,17 @@ class ProductService
         }
         $id = $arraySlug[count($arraySlug) - 1];
 
+        $sortQuery = $this->getSortQuery($request);
+        $query = isset($request->q) ? $request->q : "";
+        $priceFilter = $this->getFilterPriceProduct($request);
+        $params = [
+            'q' => $query,
+            'price' => $priceFilter,
+            'orderBy' => $sortQuery
+        ];
 
-        $allProduct = $this->sortAndFilterProductByCatetory($id, $request);
+        $allProduct = $this->productRepository->getAllProductByCategoryOnSite($id,$params);
+
         if (count($allProduct) > 0) {
             $categorySingle = $this->categoryProductRepository->getCategoryProductByIdOnSite($allProduct[0]->category_product_id);
             if ($categorySingle->slug != $category) {
@@ -207,62 +143,6 @@ class ProductService
         return [
             'allProduct' => $allProduct,
         ];
-
-    }
-
-    public function sortAndFilterProductByCatetory($id, $request)
-    {
-        $sortQuery = $this->getSortQuery($request);
-
-        // $dataFilter[0] : color, [1] : price
-        $dataFilter = $this->getFilterProduct($request);
-        $colors = $dataFilter[0];
-        $price = $dataFilter[1];
-
-        if ($colors == null && $price == null) {
-            if ($sortQuery == []) {
-                $allProduct = $this->productRepository->getAllProductByCategoryOnSite($id);
-            } else {
-                $allProduct = $this->productRepository->getAllProductByCategoryAndSortOnSite($id, $sortQuery);
-            }
-        } else {
-            if ($colors == null) {
-                if ($sortQuery == []) {
-                    $allProduct = $this->productRepository->getProductByCategoryByFilterPriceOnSite($id, $price);
-                } else {
-                    $allProduct = $this->productRepository->getProductByCategoryByFilterPriceAndSortOnSite($id, $price, $sortQuery);
-                }
-            } else if ($colors != null) {
-                $colorInDB = $this->productRepository->getListProduct();
-                $arrId = [];
-                foreach ($colorInDB as $key => $value) {
-                    $slugColor = AliasString($value);
-                    $arrColorRecord = explode('-', $slugColor);
-                    $arrColorRecord = array_merge($arrColorRecord, $colors);
-                    $arrColorRecord = array_unique($arrColorRecord);
-                    if (count($arrColorRecord) > 0) {
-                        $arrId[] = $key;
-                    }
-                }
-
-                if ($price == null) {
-                    if ($sortQuery == []) {
-                        $allProduct = $this->productRepository->getProductByCategoryByFilterColorOnSite($id, $arrId);
-                    } else {
-                        $allProduct = $this->productRepository->getProductByCategoryByFilterColorAndSortOnSite($id, $arrId, $sortQuery);
-                    }
-                } else {
-                    if ($sortQuery == []) {
-                        $allProduct = $this->productRepository->getProductByCategoryByFilterColorAndPriceOnSite($id, $arrId, $price);
-                    } else {
-                        $allProduct = $this->productRepository->getProductByCategoryByFilterColorAndPriceAndSortOnSite($id, $arrId, $price, $sortQuery);
-                    }
-                }
-            }
-        }
-
-
-        return $allProduct;
 
     }
 }

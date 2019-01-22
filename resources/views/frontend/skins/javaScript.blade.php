@@ -12,7 +12,11 @@
 {!! Html::script('st-admin/js/bootstrap-notify.min.js') !!}
 
 <!-- JS Page Level -->
+<script src="{{ asset('public/frontend/assets/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
+<script src="{{ asset('public/frontend/assets/plugins/countdown/jquery.plugin.min.js') }}"></script>
+<script src="{{ asset('public/frontend/assets/plugins/countdown/jquery.countdown.min.js') }}"></script>
 <script src="{{ asset('public/frontend/assets/js/theme.js') }}"></script>
+
 
 <!--[if (gte IE 9)|!(IE)]><!-->
 {{--<script src="{{ asset('public/frontend/assets/plugins/jquery.cookie.js') }}"></script>--}}

@@ -149,28 +149,55 @@ class ProductRepository extends EloquentRepository implements ProductRepositoryI
             ->keyBy('id');
     }
 
-    public function getAllProductOnSite()
+    public function getAllProductOnSite($params = null)
     {
-        return $this->_model
-            ->withoutGlobalScope('confirm')
+        $model = $this->_model
             ->join('categories_product', 'products.category_product_id', '=', 'categories_product.id')
             ->where('categories_product.status', "active")
-            ->where('products.confirm_action', null)
             ->where('products.status', "active")
-            ->select(['products.*'])
+            ->select(['products.*']);
+
+        if ($params['q'] != '') {
+            $model->where('products.name', 'like', '%' . $params['q'] . '%');
+        }
+        if ($params['price'] != '') {
+            $model->where('products.price', '>=', $params['price']['start'] . "000")
+                ->where('products.price', '<=', $params['price']['end'] . "000");
+        }
+        if ($params['orderBy'] != '') {
+            $model->orderBy('products.' . $params['orderBy']['key'], $params['orderBy']['value']);
+        }
+
+        return $model->withoutGlobalScope('confirm')
+            ->where('products.confirm_action', null)
+            ->orderBy('products.updated_at', 'desc')
             ->paginate(9);
     }
 
-    public function getAllProductByCategoryOnSite($id)
+    public function getAllProductByCategoryOnSite($id, $params = null)
     {
-        return $this->_model
-            ->withoutGlobalScope('confirm')
+        $model = $this->_model
             ->join('categories_product', 'products.category_product_id', '=', 'categories_product.id')
             ->where('categories_product.status', "active")
-            ->where('products.confirm_action', null)
             ->where('products.status', "active")
-            ->select(['products.*'])
+            ->select(['products.*']);
+
+        if ($params['q'] != '') {
+            $model->where('name', 'like', '%' . $params['q'] . '%');
+        }
+
+        if ($params['price'] != '') {
+            $model->where('products.price', '>=', $params['price']['start'] . "000")
+                ->where('products.price', '<=', $params['price']['end'] . "000");
+        }
+        if ($params['orderBy'] != '') {
+            $model->orderBy('products.' . $params['orderBy']['key'], $params['orderBy']['value']);
+        }
+
+        return $model->withoutGlobalScope('confirm')
+            ->where('products.confirm_action', null)
             ->where('products.category_product_id', $id)
+            ->orderBy('products.updated_at', 'desc')
             ->paginate(9);
     }
 
@@ -187,255 +214,8 @@ class ProductRepository extends EloquentRepository implements ProductRepositoryI
             ->all();
     }
 
-    public function getAllProductAndSortOnSite($sort)
-    {
-        return $this->_model
-            ->withoutGlobalScope('confirm')
-            ->join('categories_product', 'products.category_product_id', '=', 'categories_product.id')
-            ->where('categories_product.status', "active")
-            ->where('products.confirm_action', null)
-            ->where('products.status', "active")
-            ->select(['products.*'])
-            ->orderBy('products.' . $sort[0], $sort[1])
-            ->paginate(9);
-    }
-
-    public function getAllProductByCategoryAndSortOnSite($id, $sort)
-    {
-        return $this->_model
-            ->withoutGlobalScope('confirm')
-            ->join('categories_product', 'products.category_product_id', '=', 'categories_product.id')
-            ->where('categories_product.status', "active")
-            ->where('products.confirm_action', null)
-            ->where('products.status', "active")
-            ->select(['products.*'])
-            ->where('products.category_product_id', $id)
-            ->orderBy('products.' . $sort[0], $sort[1])
-            ->paginate(9);
-    }
-
-    public function getProductByFilterPriceOnSite($price)
-    {
-        return $this->_model
-            ->withoutGlobalScope('confirm')
-            ->join('categories_product', 'products.category_product_id', '=', 'categories_product.id')
-            ->where('categories_product.status', "active")
-            ->where('products.confirm_action', null)
-            ->where('products.status', "active")
-            ->select(['products.*'])
-            ->where('products.price', '>=', $price[0] . "000")
-            ->where('products.price', '<=', $price[1] . "000")
-            ->paginate(9);
-    }
-
-    public function getProductByCategoryByFilterPriceOnSite($id, $price)
-    {
-        return $this->_model
-            ->withoutGlobalScope('confirm')
-            ->join('categories_product', 'products.category_product_id', '=', 'categories_product.id')
-            ->where('categories_product.status', "active")
-            ->where('products.confirm_action', null)
-            ->where('products.status', "active")
-            ->select(['products.*'])
-            ->where('products.category_product_id', $id)
-            ->where('products.price', '>=', $price[0] . "000")
-            ->where('products.price', '<=', $price[1] . "000")
-            ->paginate(9);
-    }
-
-    public function getProductByFilterPriceAndSortOnSite($price, $sort)
-    {
-        return $this->_model
-            ->withoutGlobalScope('confirm')
-            ->join('categories_product', 'products.category_product_id', '=', 'categories_product.id')
-            ->where('categories_product.status', "active")
-            ->where('products.confirm_action', null)
-            ->where('products.status', "active")
-            ->select(['products.*'])
-            ->where('products.price', '>=', $price[0] . "000")
-            ->where('products.price', '<=', $price[1] . "000")
-            ->orderBy('products.' . $sort[0], $sort[1])
-            ->paginate(9);
-    }
-
-    public function getProductByCategoryByFilterPriceAndSortOnSite($id, $price, $sort)
-    {
-        return $this->_model
-            ->withoutGlobalScope('confirm')
-            ->join('categories_product', 'products.category_product_id', '=', 'categories_product.id')
-            ->where('categories_product.status', "active")
-            ->where('products.confirm_action', null)
-            ->where('products.status', "active")
-            ->select(['products.*'])
-            ->where('products.category_product_id', $id)
-            ->where('products.price', '>=', $price[0] . "000")
-            ->where('products.price', '<=', $price[1] . "000")
-            ->orderBy('products.' . $sort[0], $sort[1])
-            ->paginate(9);
-    }
-
-    public function getProductByFilterColorOnSite($arraId)
-    {
-        return $this->_model
-            ->withoutGlobalScope('confirm')
-            ->join('categories_product', 'products.category_product_id', '=', 'categories_product.id')
-            ->where('categories_product.status', "active")
-            ->where('products.confirm_action', null)
-            ->where('products.status', "active")
-            ->select(['products.*'])
-            ->whereIn('products.id', $arraId)
-            ->paginate(9);
-    }
-
-    public function getProductByCategoryByFilterColorOnSite($id, $arraId)
-    {
-        return $this->_model
-            ->withoutGlobalScope('confirm')
-            ->join('categories_product', 'products.category_product_id', '=', 'categories_product.id')
-            ->where('categories_product.status', "active")
-            ->where('products.confirm_action', null)
-            ->where('products.status', "active")
-            ->select(['products.*'])
-            ->where('products.category_product_id', $id)
-            ->whereIn('products.id', $arraId)
-            ->paginate(9);
-    }
-
-    public function getProductByFilterColorAndSortOnSite($arraId, $sort)
-    {
-        return $this->_model
-            ->withoutGlobalScope('confirm')
-            ->join('categories_product', 'products.category_product_id', '=', 'categories_product.id')
-            ->where('categories_product.status', "active")
-            ->where('products.confirm_action', null)
-            ->where('products.status', "active")
-            ->select(['products.*'])
-            ->whereIn('products.id', $arraId)
-            ->orderBy('products.' . $sort[0], $sort[1])
-            ->paginate(9);
-    }
-
-    public function getProductByCategoryByFilterColorAndSortOnSite($id, $arraId, $sort)
-    {
-        return $this->_model
-            ->withoutGlobalScope('confirm')
-            ->join('categories_product', 'products.category_product_id', '=', 'categories_product.id')
-            ->where('categories_product.status', "active")
-            ->where('products.confirm_action', null)
-            ->where('products.status', "active")
-            ->select(['products.*'])
-            ->where('products.category_product_id', $id)
-            ->whereIn('products.id', $arraId)
-            ->orderBy('products.' . $sort[0], $sort[1])
-            ->paginate(9);
-    }
-
-    public function getProductByFilterColorAndPriceOnSite($arraId, $price)
-    {
-        return $this->_model
-            ->withoutGlobalScope('confirm')
-            ->join('categories_product', 'products.category_product_id', '=', 'categories_product.id')
-            ->where('categories_product.status', "active")
-            ->where('products.confirm_action', null)
-            ->where('products.status', "active")
-            ->select(['products.*'])
-            ->whereIn('products.id', $arraId)
-            ->where('products.price', '>=', $price[0] . "000")
-            ->where('products.price', '<=', $price[1] . "000")
-            ->paginate(9);
-    }
-
-    public function getProductByCategoryByFilterColorAndPriceOnSite($id, $arraId, $price)
-    {
-        return $this->_model
-            ->withoutGlobalScope('confirm')
-            ->join('categories_product', 'products.category_product_id', '=', 'categories_product.id')
-            ->where('categories_product.status', "active")
-            ->where('products.confirm_action', null)
-            ->where('products.status', "active")
-            ->select(['products.*'])
-            ->where('products.category_product_id', $id)
-            ->whereIn('products.id', $arraId)
-            ->where('products.price', '>=', $price[0] . "000")
-            ->where('products.price', '<=', $price[1] . "000")
-            ->paginate(9);
-    }
-
-    public function getProductByFilterColorAndPriceAndSortOnSite($arraId, $price, $sort)
-    {
-        return $this->_model
-            ->withoutGlobalScope('confirm')
-            ->join('categories_product', 'products.category_product_id', '=', 'categories_product.id')
-            ->where('categories_product.status', "active")
-            ->where('products.confirm_action', null)
-            ->where('products.status', "active")
-            ->select(['products.*'])
-            ->whereIn('products.id', $arraId)
-            ->where('products.price', '>=', $price[0] . "000")
-            ->where('products.price', '<=', $price[1] . "000")
-            ->orderBy('products.' . $sort[0], $sort[1])
-            ->paginate(9);
-    }
-
-    public function getProductByCategoryByFilterColorAndPriceAndSortOnSite($id, $arraId, $price, $sort)
-    {
-        return $this->_model
-            ->withoutGlobalScope('confirm')
-            ->join('categories_product', 'products.category_product_id', '=', 'categories_product.id')
-            ->where('categories_product.status', "active")
-            ->where('products.confirm_action', null)
-            ->where('products.status', "active")
-            ->select(['products.*'])
-            ->where('products.category_product_id', $id)
-            ->whereIn('products.id', $arraId)
-            ->where('products.price', '>=', $price[0] . "000")
-            ->where('products.price', '<=', $price[1] . "000")
-            ->orderBy('products.' . $sort[0], $sort[1])
-            ->paginate(9);
-    }
-
     public function getWishlistProduct($ids)
     {
         return $this->_model->whereIn('id', $ids)->get();
-    }
-
-    public function searchProductByQueryOnsite($query)
-    {
-        return $this->_model
-            ->withoutGlobalScope('confirm')
-            ->join('categories_product', 'products.category_product_id', '=', 'categories_product.id')
-            ->where('categories_product.status', "active")
-            ->where('products.confirm_action', null)
-            ->where('products.status', "active")
-            ->select(['products.*'])
-            ->where('products.name', 'like', '%' . $query . '%')
-            ->paginate(9);
-    }
-
-    public function searchProductByQueryAndSortOnSite($query, $sort)
-    {
-        return $this->_model
-            ->withoutGlobalScope('confirm')
-            ->join('categories_product', 'products.category_product_id', '=', 'categories_product.id')
-            ->where('categories_product.status', "active")
-            ->where('products.confirm_action', null)
-            ->where('products.status', "active")
-            ->select(['products.*'])
-            ->orderBy('products.' . $sort[0], $sort[1])
-            ->where('products.name', 'like', '%' . $query . '%')
-            ->paginate(9);
-    }
-
-    public function searchProductByKeyword($keyword)
-    {
-        return $this->_model
-            ->withoutGlobalScope('confirm')
-            ->join('categories_product', 'products.category_product_id', '=', 'categories_product.id')
-            ->where('categories_product.status', "active")
-            ->where('products.confirm_action', null)
-            ->where('products.status', "active")
-            ->select(['products.*'])
-            ->where('products.name', 'like', '%' . $keyword . '%')
-            ->get();
     }
 }

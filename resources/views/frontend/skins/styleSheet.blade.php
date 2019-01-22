@@ -16,6 +16,9 @@
 <link href="{{ asset('public/frontend/assets/css/theme.css') }}" rel="stylesheet">
 <link href="{{ asset('public/frontend/assets/css/theme-blue-2.css') }}" rel="stylesheet" id="theme-config-link">
 
+<link href="{{ asset('public/frontend/assets/plugins/jquery-ui/jquery-ui.min.css') }}" rel="stylesheet">
+<link href="{{ asset('public/frontend/assets/plugins/countdown/jquery.countdown.css') }}" rel="stylesheet">
+
 <!-- Head Libs -->
 <script src="{{ asset('public/frontend/assets/plugins/jquery/jquery-1.11.1.min.js') }}"></script>
 <script src="{{ asset('public/frontend/assets/plugins/modernizr.custom.js') }}"></script>

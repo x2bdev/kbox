@@ -93,6 +93,37 @@ class ViewServiceProvider extends ServiceProvider
                 ->get(5);
             $view->with(['categoriesArticle' => $categoriesArticle, 'articleNew' => $articleNew, 'articleViewHigher' => $articleViewHigher]);
         });
+
+        view()->composer('frontend.blocks.box.sidebar_left_product', function ($view) {
+            $categoriesProduct = CategoryProduct::where('status', 'active')->where('level', '1')->get();
+            $productNew = Product::join('categories_product', 'products.category_product_id', '=', 'categories_product.id')
+                ->where('categories_product.status',"active")
+                ->where('products.status', "active")
+                ->select(['products.*'])
+                ->withoutGlobalScope('confirm')
+                ->where('products.confirm_action', null)
+                ->orderBy('products.created_at', 'desc')
+                ->get(3);
+            $productViewHigher = Product::join('categories_product', 'products.category_product_id', '=', 'categories_product.id')
+                ->where('categories_product.status',"active")
+                ->where('products.status', "active")
+                ->select(['products.*'])
+                ->withoutGlobalScope('confirm')
+                ->where('products.confirm_action', null)
+                ->orderBy('products.view', 'desc')
+                ->orderBy('products.updated_at', 'desc')
+                ->get(3);
+            $productSale = Product::join('categories_product', 'products.category_product_id', '=', 'categories_product.id')
+                ->where('categories_product.status',"active")
+                ->where('products.status', "active")
+                ->select(['products.*'])
+                ->withoutGlobalScope('confirm')
+                ->where('products.confirm_action', null)
+                ->orderBy('products.price', '<>','products.price_old')
+                ->orderBy('products.updated_at', 'desc')
+                ->get(3);
+            $view->with(['categoriesProduct' => $categoriesProduct,'productNew'=>$productNew,'productViewHigher'=>$productViewHigher,'productSale'=>$productSale]);
+        });
     }
 
     public function register()
