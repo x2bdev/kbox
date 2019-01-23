@@ -239,7 +239,16 @@ li.page-item.active {
 .title-product-60 {
     height: 60px !important;
 }
+.title-product-40 {
+    height: 40px !important;
+}
 
 .display-block{
     display: block;
+}
+.red-text{
+    color: #ea0000 !important;
+}
+.black-text{
+    color: #232323 !important;
 }

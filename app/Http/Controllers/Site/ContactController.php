@@ -32,6 +32,9 @@ class ContactController extends Controller
         $variables = $this->_aboutService->index();
         return view('frontend.pages.about', [
             'content'  => $variables['data']['content'],
+            'productBestSeller' => $variables['productBestSeller'],
+            'productShortestPrice' => $variables['productShortestPrice'],
+            'productRandom' => $variables['productRandom'],
         ]);
     }
 

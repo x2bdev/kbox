@@ -5,7 +5,7 @@
             <!-- Logo 255x51 -->
             <div class="logo">
                 <a href="{{ url('/') }}"><img src="{{ asset('public/frontend/assets/img/logo.png') }}"
-                                              alt="Bella Shop"/></a>
+                                              alt="TheK-Box"/></a>
             </div>
             <!-- /Logo -->
 

@@ -5,6 +5,7 @@
             <a href="#" class="menu-toggle-close btn"><i class="fa fa-times"></i></a>
             <ul class="nav sf-menu">
                 <li class="active"><a href="{{ url('/') }}">Trang chủ</a></li>
+                <li><a href="{{ url('/gioi-thieu.html') }}">Giới thiệu</a></li>
                 <li><a href="{{ url('/san-pham.html') }}">Danh mục</a>
                     <ul>
                         @foreach($categoriesHeaderLv1 as $key => $value)

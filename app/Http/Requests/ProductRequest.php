@@ -35,8 +35,6 @@ class ProductRequest extends FormRequest
                         'image' => 'required|mimes:jpeg,bmp,png',
                         'category_product_id' => 'required',
                         'price' => 'required|numeric',
-                        'color' => 'required',
-                        'size' => 'required',
                     ];
                 }
             case 'PUT':
@@ -49,8 +47,6 @@ class ProductRequest extends FormRequest
                         'image' => 'mimes:jpeg,bmp,png',
                         'category_product_id' => 'required',
                         'price' => 'required|numeric',
-                        'color' => 'required',
-                        'size' => 'required',
                     ];
                     break;
                 }
@@ -72,8 +68,6 @@ class ProductRequest extends FormRequest
             'content.required' => Config::get('constants.VALIDATE_MESSAGE.CONTENT_REQUIRED'),
             'price.required' => Config::get('constants.VALIDATE_MESSAGE.PRICE_REQUIRED'),
             'price.numeric' => Config::get('constants.VALIDATE_MESSAGE.PRICE_NUMERIC'),
-            'color.required' => Config::get('constants.VALIDATE_MESSAGE.COLOR_REQUIRED'),
-            'size.required' => Config::get('constants.VALIDATE_MESSAGE.SIZE_REQUIRED'),
         ];
     }
 }

@@ -95,7 +95,7 @@ class ProductService
         $productSingle = $this->productRepository->getProductByIdOnSite($id);
 
         $image_detail = json_decode($productSingle->image_detail, true);
-//        $productRelated = $this->productRepository->getProductRelatedOnSite($productSingle->category_product_id);
+        $productRelated = $this->productRepository->getProductRelatedOnSite($productSingle->category_product_id);
         if ($productSingle->slug != $slug) {
             abort(404);
         }
@@ -103,7 +103,7 @@ class ProductService
         return [
             'productSingle' => $productSingle,
             'imageDetail' => $image_detail,
-//            'productRelated' => $productRelated,
+            'productRelated' => $productRelated,
         ];
     }
 

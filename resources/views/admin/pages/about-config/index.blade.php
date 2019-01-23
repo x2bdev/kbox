@@ -33,18 +33,6 @@
                         <div class="col-md-12">
                             <script src="{{ asset('/ckeditor/ckeditor.js') }}"></script>
                             <textarea class="ckeditor form-control" name="content" id="content" rows="1">{!! $aboutConfig['content'] !!}</textarea>
-                            <script>
-                                CKEDITOR.replace( 'content' , {
-                                    height: '500px',
-                                    customConfig	: '{{asset("/ckeditor/config-article.js")}}',
-                                    filebrowserBrowseUrl: '{{ asset("/ckfinder/ckfinder.html") }}',
-                                    filebrowserImageBrowseUrl: '{{ asset("/ckfinder/ckfinder.html?type=Images") }}',
-                                    filebrowserFlashBrowseUrl: '{{ asset("/ckfinder/ckfinder.html?type=Flash") }}',
-                                    filebrowserUploadUrl: '{{ asset("/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files") }}',
-                                    filebrowserImageUploadUrl: '{{ asset("/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images") }}',
-                                    filebrowserFlashUploadUrl: '{{ asset("/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash") }}'
-                                });
-                            </script>
                         </div>
                     </div>
                     <div class="ln_solid"></div>

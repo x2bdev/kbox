@@ -15,7 +15,7 @@
             </div>
         </section>
         @include('frontend.blocks.box.high_view_product')
-        @include('frontend.blocks.box.new_post')
+        {{--@include('frontend.blocks.box.new_post')--}}
         @include('frontend.blocks.box.brand')
         @include('frontend.blocks.box.top-seller-new')
         @include('frontend.blocks.box.feture')

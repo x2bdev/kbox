@@ -8,15 +8,18 @@
 
 namespace App\Services;
 
+use App\Repositories\InterfaceRepository\ProductRepositoryInterface;
 use Illuminate\Support\Facades\Config;
 use App\Repositories\InterfaceRepository\SettingRepositoryInterface;
 
 class AboutConfigService
 {
     private $settingRepository;
+    private $productRepository;
 
-    public function __construct(SettingRepositoryInterface $settingRepository) {
+    public function __construct(SettingRepositoryInterface $settingRepository, ProductRepositoryInterface $productRepository) {
         $this->settingRepository              = $settingRepository;
+        $this->productRepository              = $productRepository;
     }
 
     public function index() {
@@ -32,8 +35,15 @@ class AboutConfigService
             );
         }
 
+        $productBestSeller = $this->productRepository->getBestSellerProduct();
+        $productShortestPrice = $this->productRepository->getShortestPriceProductOnSite();
+        $productRandom = $this->productRepository->getRandomProductOnSite();
+
         return [
             'data'      => $data,
+            'productBestSeller' => $productBestSeller,
+            'productShortestPrice' => $productShortestPrice,
+            'productRandom' => $productRandom,
         ];
     }
 

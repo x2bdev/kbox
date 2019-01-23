@@ -40,7 +40,7 @@ class ProductController extends Controller
         return view('frontend.pages.product.detail_product', [
             'productSingle' => $variables['productSingle'],
             'imageDetail' => $variables['imageDetail'],
-//            'productRelated' => $variables['productRelated'],
+            'productRelated' => $variables['productRelated'],
             'url' => $url
         ]);
     }

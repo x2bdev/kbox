@@ -121,6 +121,7 @@ class ProductRepository extends EloquentRepository implements ProductRepositoryI
             ->orderBy('products.created_at', 'desc')
             ->where('products.confirm_action', null)
             ->where('products.category_product_id', $category_id)
+            ->orderBy('products.created_at', 'desc')
             ->paginate(8);
     }
 

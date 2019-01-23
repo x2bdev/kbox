@@ -86,7 +86,8 @@
                                     đ</strike></div>
                         @endif
 
-                        <div class="product-price">{{ number_format($productSingle->price)  }} đ</div>
+
+                        <div class="product-price red-text">{{ number_format($productSingle->price)  }} đ</div>
                         <hr class="page-divider"/>
 
                         <div class="product-text">
@@ -125,16 +126,18 @@
                         </ul>
                         <table>
                             <tr>
-                                <td class="title">Category:</td>
-                                <td>Men Dress</td>
+                                <td class="title"><img style="width: 40px"
+                                                       src="{{ asset('/public/frontend/assets/img/icon-fb.png') }}"
+                                                       alt="FACEBOOK"></td>
+                                <td><a target="_blank" rel="noopener noreferrer" href="{{ $dataSocial->facebook_url }}">FACEBOOK:
+                                        THE K-BOX</a></td>
                             </tr>
                             <tr>
-                                <td class="title">Product Code:</td>
-                                <td>PS08</td>
-                            </tr>
-                            <tr>
-                                <td class="title">Tags:</td>
-                                <td>Fashion - clothes - Dress - Men - jean</td>
+                                <td class="title"><img style="width: 40px"
+                                                       src="{{ asset('/public/frontend/assets/img/icon-shopee.png') }}"
+                                                       alt="SHOPEE"></td>
+                                <td><a target="_blank" rel="noopener noreferrer" href="{{ $dataSocial->shopee_url }}">SHOPEE:
+                                        THE K-BOX</a></td>
                             </tr>
                         </table>
 
@@ -157,16 +160,7 @@
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane fade in active" id="item-description">
-                            <p>Integer egestas, orci id condimentum eleifend, nibh nisi pulvinar eros, vitae ornare
-                                massa neque ut orci. Nam aliquet lectus sed odio eleifend, at iaculis dolor egestas.
-                                Nunc elementum pellentesque augue sodales porta. Etiam aliquet rutrum turpis, feugiat
-                                sodales ipsum consectetur nec. </p>
-                            <p>Morbi imperdiet lacus nec ante blandit, sit amet fermentum magna faucibus. Nunc nec
-                                libero id urna vulputate venenatis. Aenean vulputate odio felis, in rhoncus sapien
-                                auctor nec. Donec non posuere sem. Ut quis egestas libero, mattis gravida nibh.
-                                Phasellus a nisi ac mi luctus tincidunt et non est. Proin ac orci rhoncus arcu bibendum
-                                molestie vel et metus. Aenean iaculis purus et velit iaculis, nec convallis ipsum
-                                ornare. Integer a orci enim.</p>
+                            <p>{!! $productSingle->content !!}.</p>
                         </div>
                         <div class="tab-pane fade" id="reviews">
                             <div data-width="100%" class="fb-comments" data-href="{{ $url }}" data-numposts="5"></div>
@@ -177,55 +171,8 @@
         </section>
         <!-- /PAGE -->
 
-    @include('frontend.blocks.box.relate_product')
-
-    <!-- PAGE -->
-        <section class="page-section">
-            <div class="container">
-                <h2 class="section-title"><span>Brand &amp; Clients</span></h2>
-                <div class="partners-carousel">
-                    <div class="owl-carousel" id="partners">
-                        <div><a href="#"><img
-                                        src=" {{ asset('public/frontend/assets/img/preview/partners/brand-logo.jpg') }}"
-                                        alt=""/></a></div>
-                        <div><a href="#"><img
-                                        src=" {{ asset('public/frontend/assets/img/preview/partners/brand-logo.jpg') }}"
-                                        alt=""/></a></div>
-                        <div><a href="#"><img
-                                        src=" {{ asset('public/frontend/assets/img/preview/partners/brand-logo.jpg') }}"
-                                        alt=""/></a></div>
-                        <div><a href="#"><img
-                                        src=" {{ asset('public/frontend/assets/img/preview/partners/brand-logo.jpg') }}"
-                                        alt=""/></a></div>
-                        <div><a href="#"><img
-                                        src=" {{ asset('public/frontend/assets/img/preview/partners/brand-logo.jpg') }}"
-                                        alt=""/></a></div>
-                        <div><a href="#"><img
-                                        src=" {{ asset('public/frontend/assets/img/preview/partners/brand-logo.jpg') }}"
-                                        alt=""/></a></div>
-                        <div><a href="#"><img
-                                        src=" {{ asset('public/frontend/assets/img/preview/partners/brand-logo.jpg') }}"
-                                        alt=""/></a></div>
-                        <div><a href="#"><img
-                                        src=" {{ asset('public/frontend/assets/img/preview/partners/brand-logo.jpg') }}"
-                                        alt=""/></a></div>
-                        <div><a href="#"><img
-                                        src=" {{ asset('public/frontend/assets/img/preview/partners/brand-logo.jpg') }}"
-                                        alt=""/></a></div>
-                        <div><a href="#"><img
-                                        src=" {{ asset('public/frontend/assets/img/preview/partners/brand-logo.jpg') }}"
-                                        alt=""/></a></div>
-                        <div><a href="#"><img
-                                        src=" {{ asset('public/frontend/assets/img/preview/partners/brand-logo.jpg') }}"
-                                        alt=""/></a></div>
-                        <div><a href="#"><img
-                                        src=" {{ asset('public/frontend/assets/img/preview/partners/brand-logo.jpg') }}"
-                                        alt=""/></a></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- /PAGE -->
+        @include('frontend.blocks.box.relate_product')
+        @include('frontend.blocks.box.brand')
 
     </div>
 
@@ -333,8 +280,6 @@
 
 
             $('.smt-add-to-cart').click(function () {
-
-
                 var check_item = $('#span_check_item').text();
                 if (check_item === "false") {
                     errorMsg("Thêm vào giỏ thất bại");
@@ -462,6 +407,113 @@
                     }
                 }
             });
+            $('.btn-add-cart').click(function () {
+                // get id, checkItem product
+                var stringId = $(this).attr('class').split(' ');
+                var id = stringId[stringId.length - 1];
+                var checkProductString = $('.product-item-' + id).attr('class').split(' ');
+                var checkProduct = checkProductString[checkProductString.length - 2];
+                if (checkProduct === "false") {
+                    errorMsg("Thêm vào giỏ thất bại");
+                } else {
+                    var url = baseURL + "/gio-hang/them-san-pham";
+                    var token = jQuery("input[name='_token']").attr('value');
+                    data = {
+                        "_token": token,
+                        "id": id,
+                        "qty": 1,
+                    };
+                    jQuery.ajax({
+                        url: url,
+                        type: 'post',
+                        cache: false,
+                        data: data,
+                        success: function (result) {
+                            if (result.type === 'empty') {
+                                var totalNew = parseInt(result.qty) * parseInt(result.price);
+                                var totalNewText = totalNew.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,") + " đ";
+                                var resultPriceText = result.price.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,") + " đ";
+                                $('.cart-items-inner').prepend('<div class="media">' +
+                                    '                                <span style="display: none">' + totalNewText + '</span>' +
+                                    '                                <a class="pull-left" href="#"><img class="media-object item-image"' +
+                                    '                                                                   src="' + baseURL + '/public/upload/images/product/' + result.image + '"' +
+                                    '                                                                   alt="">' +
+                                    '                                </a>' +
+                                    '                                <p class="pull-right item-price price-product-' + id + '">' + resultPriceText + ' đ</p>' +
+                                    '                                <div class="media-body">' +
+                                    '                                    <h4 class="media-heading item-title"><a href="#" class="count-qty qty-name-' + id + ' ' + result.qty + '"><strong style="color: red">' + result.qty + '</strong>' +
+                                    '                                            x' + ' ' + result.name + '</a></h4>' +
+                                    '                                </div>' +
+                                    '                            </div>');
+
+
+                                var divTotal = '<div class="media div-total">' +
+                                    '                            <p class="pull-right item-price total-price ' + totalNew + '">' + totalNewText + ' đ</p>' +
+                                    '                            <div class="media-body">' +
+                                    '                                <h4 class="media-heading item-title summary">Tổng cộng</h4>' +
+                                    '                            </div>' +
+                                    '                        </div>';
+                                $('.btn-popup-cart').before(divTotal);
+                            } else {
+
+                                var total = $('.total-price').attr('class').split(' ');
+                                total = total[total.length - 1];
+
+                                var priceNew = parseInt(result.price);
+                                var priceNewText = priceNew.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,") + " đ";
+                                var totalNew = parseInt(total) + (parseInt(result.qty) * priceNew);
+                                var totalNewText = totalNew.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,") + " đ";
+
+                                var tagPTotal = $('.total-price');
+
+                                if (result.type === 'old') {
+                                    var qty_name = $('.qty-name-' + id);
+                                    var qty = qty_name.attr('class').split(' ');
+                                    qty = qty[qty.length - 1];
+                                    var qtyNew = parseInt(qty) + parseInt(result.qty);
+                                    // alert(qtyNew);
+                                    // return false;
+
+                                    qty_name.html('<strong style="color: red">' + qtyNew + '</strong> X ' + result.name + '');
+                                    qty_name.removeClass().addClass('count-qty qty-name-' + id + ' ' + qtyNew);
+
+                                    tagPTotal.removeClass().addClass('pull-right item-price total-price ' + totalNew + '');
+                                    tagPTotal.text(totalNewText + ' đ');
+                                } else if (result.type === 'new') {
+                                    var divProductNew = '<div class="media">' +
+                                        '                                <span style="display: none">' + totalNewText + '</span>' +
+                                        '                                <a class="pull-left" href="#"><img class="media-object item-image"' +
+                                        '                                                                   src="' + baseURL + '/public/upload/images/product/' + result.image + '"' +
+                                        '                                                                   alt="">' +
+                                        '                                </a>' +
+                                        '                                <p class="pull-right item-price price-product-' + id + '">' + priceNewText + ' đ</p>' +
+                                        '                                <div class="media-body">' +
+                                        '                                    <h4 class="media-heading item-title"><a href="#" class="count-qty qty-name-' + id + ' ' + result.qty + '"><strong style="color: red">' + result.qty + '</strong>' +
+                                        '                                            x' + ' ' + result.name + '</a></h4>' +
+                                        '                                </div>' +
+                                        '                            </div>';
+                                    tagPTotal.removeClass().addClass('pull-right item-price total-price ' + totalNew + '');
+                                    tagPTotal.text(totalNewText + ' đ');
+                                    $('.div-total').before(divProductNew);
+                                }
+                            }
+                            var countItem = 0;
+                            $('.count-qty').each(function () {
+                                var number = $(this).attr('class').split(' ');
+                                number = number[number.length - 1];
+                                countItem = parseInt(countItem) + parseInt(number);
+                            });
+                            var spanCount = $('.span-count-item');
+                            spanCount.text(countItem + ' item(s)');
+                            successMsg('Thêm vào giỏ hàng thành công');
+                        },
+                        error: function () {
+                            // alert("fail");
+                            errorMsg("Thêm vào giỏ thất bại");
+                        }
+                    });
+                }
+            })
 
 
         });
