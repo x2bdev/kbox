@@ -5,16 +5,16 @@
         <div class="top-products-carousel">
             <div class="owl-carousel" id="top-products-carousel">
                 @foreach($productNew as $key => $value)
-                    <div class="thumbnail no-border no-padding product-item-{{ $value->id }} {{ $value->check_item === "active"?"true":"false" }}">
-                        <div class="badges label-product">
-                            @if($value->new === "active")
-                                <div class="hot item-hot text-center">Hot</div>
-                            @endif
-                            @if($value->price !== $value->price_old)
-                                <div class="new item-new text-center item-sale">Sale</div>
-                            @endif
-                        </div>
-                        <div class="media thumbnail-img-small">
+                    <div class="thumbnail no-border no-padding align-img-center product-item-{{ $value->id }} {{ $value->check_item === "active"?"true":"false" }}">
+                        <div class="media thumbnail-img-small img-center">
+                            <div class="badges label-product">
+                                @if($value->new === "active")
+                                    <div class="hot item-hot text-center">Hot</div>
+                                @endif
+                                @if($value->price !== $value->price_old)
+                                    <div class="new item-new text-center item-sale">Sale</div>
+                                @endif
+                            </div>
                             <a class="media-link" data-gal="prettyPhoto"
                                href="{{ asset('public/upload/images/product/'.$value->image) }}">
                                 <img src="{{ asset('public/upload/images/product/'.$value->image) }}"

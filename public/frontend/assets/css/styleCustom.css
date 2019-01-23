@@ -252,3 +252,12 @@ li.page-item.active {
 .black-text{
     color: #232323 !important;
 }
+
+.align-img-center{
+    vertical-align: middle;
+}
+.img-center{
+    margin-left: auto !important;
+    margin-right: auto !important;
+    display: block !important;
+}
