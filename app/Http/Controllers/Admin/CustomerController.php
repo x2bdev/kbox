@@ -80,7 +80,7 @@ class CustomerController extends Controller
 
     public function edit($id)
     {
-        $variables = $this->userService->edit($id);
+        $variables = $this->customerService->edit($id);
         return view('admin.pages.user.edit', [
             'infoBasic' => $variables['infoBasic'],
             'data' => $variables['data'],

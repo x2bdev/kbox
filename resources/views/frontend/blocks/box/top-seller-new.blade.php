@@ -5,163 +5,84 @@
                 <div class="product-list">
                     <a class="btn btn-theme btn-title-more" href="#">Xem tất cả</a>
                     <h4 class="block-title"><span>Bán chạy</span></h4>
-                    <div class="media">
-                        <a class="pull-left media-link" href="#">
-                            <div class="image-s-small-frames">
-                                <img class="media-object"
-                                     src="{{ asset('public/upload/images/product/1546970269_7160547_252602074be3f62e32f6947947a34e74.jpg') }}"
-                                     alt="">
-                            </div>
-                        </a>
-                        <div class="media-body">Header Header Header Header Header
-                            Header </a></h4>
-                            <div class="price">
-                                <ins>$400.00</ins>
-                                <del>$425.00</del>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="media">
-                        <a class="pull-left media-link" href="#">
-                            <div class="image-s-small-frames">
-                                <img class="media-object"
-                                     src="{{ asset('public/upload/images/product/1546970269_7160547_252602074be3f62e32f6947947a34e74.jpg') }}"
-                                     alt="">
-                            </div>
-                        </a>
-                        <div class="media-body">Header Header Header Header Header
-                            Header </a></h4>
-                            <div class="price">
-                                <ins>$400.00</ins>
-                                <del>$425.00</del>
+                    @foreach($productBestSeller as $key => $value)
+                        <div class="media">
+                            <a class="pull-left media-link" href="#">
+                                <div class="image-s-small-frames">
+                                    <img class="media-object"
+                                         src="{{ asset('public/upload/images/product/'.$value->image) }}"
+                                         alt="{{ $value->name }}">
+                                </div>
+                            </a>
+                            <div class="media-body">
+                                <h4 class="media-heading"><a
+                                            href="{{ url('/san-pham/'.$value->slug.'-'.$value->id.'.html') }}">{{ $value->name }}</a>
+                                </h4>
+                                <div class="price">
+                                    <ins>{{ number_format($value->price)  }} đ</ins>
+                                    @if($value->price !== $value->price_old)
+                                        <del>{{ number_format($value->price_old)  }} đ</del>
+                                    @endif
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="media">
-                        <a class="pull-left media-link" href="#">
-                            <div class="image-s-small-frames">
-                                <img class="media-object"
-                                     src="{{ asset('public/upload/images/product/1546970269_7160547_252602074be3f62e32f6947947a34e74.jpg') }}"
-                                     alt="">
-                            </div>
-                        </a>
-                        <div class="media-body">Header Header Header Header Header
-                            Header </a></h4>
-                            <div class="price">
-                                <ins>$400.00</ins>
-                                <del>$425.00</del>
-                            </div>
-                        </div>
-                    </div>
-
+                    @endforeach
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="product-list">
                     <a class="btn btn-theme btn-title-more" href="#">Xem tất cả</a>
-                    <h4 class="block-title"><span>Yêu thích</span></h4>
-                    <div class="media">
-                        <a class="pull-left media-link" href="#">
-                            <div class="image-s-small-frames">
-                                <img class="media-object"
-                                     src="{{ asset('public/frontend/assets/img/preview/shop/top-sellers-4.jpg') }}"
-                                     alt="">
-                            </div>
-                        </a>
-                        <div class="media-body">
-                            <h4 class="media-heading"><a href="#">Standard Product Header</a></h4>
-                            <div class="price">
-                                <ins>$400.00</ins>
-                                <del>$425.00</del>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="media">
-                        <a class="pull-left media-link" href="#">
-                            <div class="image-s-small-frames">
-                                <img class="media-object"
-                                     src="{{ asset('public/frontend/assets/img/preview/shop/top-sellers-4.jpg') }}"
-                                     alt="">
-                            </div>
-                        </a>
-                        <div class="media-body">
-                            <h4 class="media-heading"><a href="#">Standard Product Header</a></h4>
-                            <div class="price">
-                                <ins>$400.00</ins>
-                                <del>$425.00</del>
+                    <h4 class="block-title"><span>Siêu rẻ</span></h4>
+                    @foreach($productShortestPrice as $key => $value)
+                        <div class="media">
+                            <a class="pull-left media-link" href="#">
+                                <div class="image-s-small-frames">
+                                    <img class="media-object"
+                                         src="{{ asset('public/upload/images/product/'.$value->image) }}"
+                                         alt="{{ $value->name }}">
+                                </div>
+                            </a>
+                            <div class="media-body">
+                                <h4 class="media-heading"><a
+                                            href="{{ url('/san-pham/'.$value->slug.'-'.$value->id.'.html') }}">{{ $value->name }}</a>
+                                </h4>
+                                <div class="price">
+                                    <ins>{{ number_format($value->price)  }} đ</ins>
+                                    @if($value->price !== $value->price_old)
+                                        <del>{{ number_format($value->price_old)  }} đ</del>
+                                    @endif
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="media">
-                        <a class="pull-left media-link" href="#">
-                            <div class="image-s-small-frames">
-                                <img class="media-object"
-                                     src="{{ asset('public/frontend/assets/img/preview/shop/top-sellers-4.jpg') }}"
-                                     alt="">
-                            </div>
-                        </a>
-                        <div class="media-body">
-                            <h4 class="media-heading"><a href="#">Standard Product Header</a></h4>
-                            <div class="price">
-                                <ins>$400.00</ins>
-                                <del>$425.00</del>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="product-list">
                     <a class="btn btn-theme btn-title-more" href="#">Xem tất cả</a>
                     <h4 class="block-title"><span>Ngẫu nhiên</span></h4>
-                    <div class="media">
-                        <a class="pull-left media-link" href="#">
-                            <div class="image-s-small-frames">
-                                <img class="media-object"
-                                     src="{{ asset('public/frontend/assets/img/preview/shop/top-sellers-7.jpg') }}"
-                                     alt="">
-                            </div>
-                        </a>
-                        <div class="media-body">
-                            <h4 class="media-heading"><a href="#">Standard Product Header</a></h4>
-                            <div class="price">
-                                <ins>$400.00</ins>
-                                <del>$425.00</del>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="media">
-                        <a class="pull-left media-link" href="#">
-                            <div class="image-s-small-frames">
-                                <img class="media-object"
-                                     src="{{ asset('public/frontend/assets/img/preview/shop/top-sellers-7.jpg') }}"
-                                     alt="">
-                            </div>
-                        </a>
-                        <div class="media-body">
-                            <h4 class="media-heading"><a href="#">Standard Product Header</a></h4>
-                            <div class="price">
-                                <ins>$400.00</ins>
-                                <del>$425.00</del>
+                    @foreach($productRandom as $key => $value)
+                        <div class="media">
+                            <a class="pull-left media-link" href="#">
+                                <div class="image-s-small-frames">
+                                    <img class="media-object"
+                                         src="{{ asset('public/upload/images/product/'.$value->image) }}"
+                                         alt="{{ $value->name }}">
+                                </div>
+                            </a>
+                            <div class="media-body">
+                                <h4 class="media-heading"><a
+                                            href="{{ url('/san-pham/'.$value->slug.'-'.$value->id.'.html') }}">{{ $value->name }}</a>
+                                </h4>
+                                <div class="price">
+                                    <ins>{{ number_format($value->price)  }} đ</ins>
+                                    @if($value->price !== $value->price_old)
+                                        <del>{{ number_format($value->price_old)  }} đ</del>
+                                    @endif
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="media">
-                        <a class="pull-left media-link" href="#">
-                            <div class="image-s-small-frames">
-                                <img class="media-object"
-                                     src="{{ asset('public/frontend/assets/img/preview/shop/top-sellers-7.jpg') }}"
-                                     alt="">
-                            </div>
-                        </a>
-                        <div class="media-body">
-                            <h4 class="media-heading"><a href="#">Standard Product Header</a></h4>
-                            <div class="price">
-                                <ins>$400.00</ins>
-                                <del>$425.00</del>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>

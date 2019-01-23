@@ -125,6 +125,7 @@ class CategoryArticleController extends Controller
 
     public function create()
     {
+        $this->authorize('add');
         $categories = $this->categoryArticleService->create();
         return view('admin.pages.category-article.create', [
             'categories' => $categories
@@ -148,20 +149,24 @@ class CategoryArticleController extends Controller
 
     public function update(CategoryArticleRequest $request, $id)
     {
+        $this->authorize('edit');
         return $this->categoryArticleService->update($request, $id);
     }
 
     public function delete(Request $request)
     {
+        $this->authorize('delete');
         return $this->categoryArticleService->delete($request);
     }
 
     public function changeStatus(Request $request)
     {
+        $this->authorize('edit');
         return $this->categoryArticleService->changeStatus($request);
     }
 
     public function moveNode(Request $request){
+        $this->authorize('edit');
         return $this->categoryArticleService->moveNode($request);
     }
 }

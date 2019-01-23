@@ -128,6 +128,7 @@ class ArticleController extends Controller
     }
 
     public function create() {
+        $this->authorize('add');
         $variables = $this->articleService->create();
         return view('admin.pages.article.create', [
             'categories'    => $variables['categories']
@@ -148,14 +149,17 @@ class ArticleController extends Controller
     }
 
     public function update(ArticleRequest $request, $id) {
+        $this->authorize('edit');
         return $this->articleService->update($request, $id);
     }
 
     public function delete(Request $request) {
+        $this->authorize('delete');
         return $this->articleService->delete($request);
     }
 
     public function changeStatus(Request $request) {
+        $this->authorize('edit');
         return $this->articleService->changeStatus($request);
     }
 }

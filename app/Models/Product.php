@@ -34,8 +34,6 @@ class Product extends Model
         'price',
         'price_old',
         'category_product_id',
-        'color',
-        'size',
         'confirm_action',
         'data_update'
     ];

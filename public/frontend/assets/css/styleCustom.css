@@ -214,3 +214,32 @@ li.page-item.active {
     width: 120px;
     line-height: 33px;
 }
+
+.item-sale {
+    background: #22A7F0 !important;
+}
+
+.title-product-3-line {
+    text-transform: capitalize;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+.title-product-2-line {
+    text-transform: capitalize;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.title-product-60 {
+    height: 60px !important;
+}
+
+.display-block{
+    display: block;
+}

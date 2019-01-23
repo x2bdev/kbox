@@ -122,6 +122,7 @@ class BannerController extends Controller
     }
 
     public function create() {
+        $this->authorize('add');
         return view('admin.pages.banner.create');
     }
 
@@ -138,14 +139,17 @@ class BannerController extends Controller
     }
 
     public function update(BannerRequest $request, $id) {
+        $this->authorize('edit');
         return $this->bannerService->update($request, $id);
     }
 
     public function delete(Request $request) {
+        $this->authorize('delete');
         return $this->bannerService->delete($request);
     }
 
     public function changeStatus(Request $request) {
+        $this->authorize('edit');
         return $this->bannerService->changeStatus($request);
     }
 }

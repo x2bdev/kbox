@@ -18,7 +18,7 @@
                         <div class="pull-right"><i class="fa fa-check-square"></i></div>
                         <div class="media-body">
                             <h4 class="media-heading">Không quên</h4>
-                            Tích điểm với mỗi lần mua hàng.
+                            Tích lũy điểm với mỗi lần mua hàng.
                         </div>
                     </div>
                 </div>

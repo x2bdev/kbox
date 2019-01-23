@@ -2,7 +2,7 @@
     <div class="form-group selectpicker-wrapper">
         <select class="selectpicker input-price" data-live-search="true"
                 data-width="100%"
-                data-toggle="tooltip" title="Select" onchange="redirectUrl(this)">
+                data-toggle="tooltip" title="Select" >
             <option>Phổ biến</option>
             <option value="{{ 'sortP=nameasc' }}">Tên A-Z</option>
             <option value="{{ 'sortP=namedesc' }}">Tên Z-A</option>

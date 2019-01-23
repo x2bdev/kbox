@@ -65,8 +65,6 @@
                         <a><i class="fa fa-book"></i> Quản lí sản phẩm <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu"
                             style="display: {{ Active::checkRoute(['attribute-config.*', 'category-product.*', 'product.index'], 'block', 'none') }};">
-                            <li class="{{ Active::checkRoute(['attribute-config.*'], 'active', '') }}"><a
-                                        href="{{ route('attribute-config.index') }}">Thuộc tính sản phẩm</a></li>
                             <li class="{{ Active::checkRoute(['category-product.*'], 'active', '') }}"><a
                                         href="{{ route('category-product.index') }}">Danh mục</a></li>
                             <li class="{{ Active::checkRoute(['product.*'], 'active', '') }}"><a

@@ -49,7 +49,7 @@
                         <div class="form-group">
                             <label class="col-md-2 control-label">Slug <span class="required">*</span></label>
                             <div class="col-md-10">
-                                {!! Form::text('slug', '', array('class' => 'form-control', 'placeholder' => 'Slug')) !!}
+                                {!! Form::text('slug', '', array('class' => 'form-control', 'placeholder' => 'Slug','readonly'=>'readonly')) !!}
                             </div>
                         </div>
                         <div class="form-group">
@@ -65,18 +65,6 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-2 control-label">Màu sản phẩm <span class="required">*</span></label>
-                            <div class="col-md-10">
-                                <input value="{{ $attributeConfig->color }}" type="text" id="color" name="color" required="required" class="tags form-control col-md-7 col-xs-12">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-2 control-label">Size sản phẩm<span class="required">*</span></label>
-                            <div class="col-md-10">
-                                <input value="{{ $attributeConfig->size }}" type="text" id="size" name="size" required="required" class="tags form-control col-md-7 col-xs-12">
-                            </div>
-                        </div>
-                        <div class="form-group">
                             <label class="col-md-2 control-label">Mô tả <span class="required">*</span></label>
                             <div class="col-md-10">
                                 {!! Form::textarea('description', '', array('class' => 'form-control', 'rows' => "3")) !!}
@@ -87,18 +75,6 @@
                             <div class="col-md-10">
                                 <script src="{{ asset('/ckeditor/ckeditor.js') }}"></script>
                                 <textarea class="ckeditor form-control" name="content" id="content" rows="1"></textarea>
-                                <script>
-                                    CKEDITOR.replace( 'content' , {
-                                        height: '500px',
-                                        customConfig	: '{{asset("/ckeditor/config-article.js")}}',
-                                        filebrowserBrowseUrl: '{{ asset("/ckfinder/ckfinder.html") }}',
-                                        filebrowserImageBrowseUrl: '{{ asset("/ckfinder/ckfinder.html?type=Images") }}',
-                                        filebrowserFlashBrowseUrl: '{{ asset("/ckfinder/ckfinder.html?type=Flash") }}',
-                                        filebrowserUploadUrl: '{{ asset("/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files") }}',
-                                        filebrowserImageUploadUrl: '{{ asset("/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images") }}',
-                                        filebrowserFlashUploadUrl: '{{ asset("/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash") }}'
-                                    });
-                                </script>
                             </div>
                         </div>
                         <div class="form-group">

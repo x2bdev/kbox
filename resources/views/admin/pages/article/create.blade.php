@@ -49,7 +49,7 @@
                         <div class="form-group">
                             <label class="col-md-2 control-label">Slug <span class="required">*</span></label>
                             <div class="col-md-10">
-                                {!! Form::text('slug', '', array('class' => 'form-control', 'placeholder' => 'Slug')) !!}
+                                {!! Form::text('slug', '', array('class' => 'form-control', 'placeholder' => 'Slug', 'readonly' => 'readonly')) !!}
                             </div>
                         </div>
                         <div class="form-group">
@@ -63,18 +63,6 @@
                             <div class="col-md-10">
                                 <script src="{{ asset('/ckeditor/ckeditor.js') }}"></script>
                                 <textarea class="ckeditor form-control" name="content" id="content" rows="1"></textarea>
-                                <script>
-                                    CKEDITOR.replace( 'content' , {
-                                        height: '500px',
-                                        customConfig	: '{{asset("/ckeditor/config-article.js")}}',
-                                        filebrowserBrowseUrl: '{{ asset("/ckfinder/ckfinder.html") }}',
-                                        filebrowserImageBrowseUrl: '{{ asset("/ckfinder/ckfinder.html?type=Images") }}',
-                                        filebrowserFlashBrowseUrl: '{{ asset("/ckfinder/ckfinder.html?type=Flash") }}',
-                                        filebrowserUploadUrl: '{{ asset("/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files") }}',
-                                        filebrowserImageUploadUrl: '{{ asset("/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images") }}',
-                                        filebrowserFlashUploadUrl: '{{ asset("/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash") }}'
-                                    });
-                                </script>
                             </div>
                         </div>
                     </div>

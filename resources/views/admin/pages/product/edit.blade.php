@@ -49,7 +49,7 @@
                         <div class="form-group">
                             <label class="col-md-2 control-label">Slug <span class="required">*</span></label>
                             <div class="col-md-10">
-                                {!! Form::text('slug', $data->slug, array('class' => 'form-control', 'placeholder' => 'Slug')) !!}
+                                {!! Form::text('slug', $data->slug, array('class' => 'form-control', 'placeholder' => 'Slug', 'readonly' => 'readonly')) !!}
                             </div>
                         </div>
                         <div class="form-group">
@@ -62,18 +62,6 @@
                             <label class="col-md-2 control-label">Giá tiền cũ <span class="required"></span></label>
                             <div class="col-md-10">
                                 {!! Form::number('price_old', $data->price_old, array('class' => 'form-control')) !!}
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-2 control-label">Màu sản phẩm <span class="required">*</span></label>
-                            <div class="col-md-10">
-                                <input value="{{ $data->color }}" type="text" id="color" name="color" required="required" class="tags form-control col-md-7 col-xs-12">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-2 control-label">Size sản phẩm <span class="required">*</span></label>
-                            <div class="col-md-10">
-                                <input value="{{ $data->size }}" type="text" id="size" name="size" required="required" class="tags form-control col-md-7 col-xs-12">
                             </div>
                         </div>
                         <div class="form-group">

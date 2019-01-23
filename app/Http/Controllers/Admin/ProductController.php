@@ -104,6 +104,8 @@ class ProductController extends Controller
 
     public function create()
     {
+        $this->authorize('add');
+
         $variables = $this->productService->create();
         return view('admin.pages.product.create', [
             'categories' => $variables['categories']
@@ -128,21 +130,25 @@ class ProductController extends Controller
 
     public function update(ProductRequest $request, $id)
     {
+        $this->authorize('edit');
         return $this->productService->update($request, $id);
     }
 
     public function delete(Request $request)
     {
+        $this->authorize('delete');
         return $this->productService->delete($request);
     }
 
     public function changeStatus(Request $request)
     {
+        $this->authorize('edit');
         return $this->productService->changeStatus($request);
     }
 
     public function setRemoveImageDetail(Request $request)
     {
+        $this->authorize('edit');
         return $this->productService->setArrayImageRemove($request);
     }
 

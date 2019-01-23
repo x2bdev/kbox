@@ -173,7 +173,6 @@ class ProductService
             $image_merge = array_unique(array_merge($image_detail, $image_detail_new));
             if ($image_remove !== null) {
                 foreach ($image_remove as $key => $value) {
-                    dd(1);
                     $image_old = 'upload/images/' . $this->infoBasic['route'] . '/' . $value;
                     $image_small_old = 'upload/images/' . $this->infoBasic['route'] . '/75x50/' . $value;
                     if (File::exists($image_old)) {
@@ -187,9 +186,9 @@ class ProductService
                     unset($image_merge[$position]);
                 }
             }
-            if ($data['image'] !== null) {
-                $image_new = 'upload/images/' . $this->infoBasic['route'] . '/' . $data['image'];
-                $image_new_small = 'upload/images/' . $this->infoBasic['route'] . '/75x50/' . $data['image'];
+            if ($data['image'] !== $product->image) {
+                $image_new = 'upload/images/' . $this->infoBasic['route'] . '/' . $product->image;
+                $image_new_small = 'upload/images/' . $this->infoBasic['route'] . '/75x50/' . $product->image;
                 if (File::exists($image_new)) {
                     File::delete($image_new);
                 }
@@ -297,8 +296,6 @@ class ProductService
                     'price' => $request->price,
                     'price_old' => $request->price_old,
                     'slug' => $request->slug,
-                    'color' => $request->color,
-                    'size' => $request->size,
                     'description' => $request->description,
                     'content' => $request->content,
                     'category_product_id' => intval($request->category_product_id),
@@ -386,8 +383,6 @@ class ProductService
             'content' => $request->content,
             'category_product_id' => intval($request->category_product_id),
             'image' => $image_full_name,
-            'color' => $request->color,
-            'size' => $request->size,
             'image_detail' => $image_detail_new,
         ];
         if (Gate::allows('editor', Auth::user())) {

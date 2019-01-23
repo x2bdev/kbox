@@ -42,4 +42,10 @@ interface ProductRepositoryInterface
     public function getListProduct();
 
     public function getWishlistProduct($ids);
+
+    public function getBestSellerProduct();
+
+    public function getShortestPriceProductOnSite();
+
+    public function getRandomProductOnSite();
 }

@@ -18,11 +18,11 @@
                                 </div>
                             </a>
                             <div class="media-body">
-                                <h4 class="media-heading"><a
-                                            href="{{ url('/san-pham/'.$value->slug.'-'.$value->id.'.html') }}">{{ $value->name }}</a>
-                                </h4>
+                                <a href="{{ url('/san-pham/'.$value->slug.'-'.$value->id.'.html') }}">
+                                    <p class="media-heading title-product-2-line">{{ $value->name }}</p>
+                                </a>
                                 <div class="price">
-                                    <ins>{{ number_format($value->price)  }} đ</ins>
+                                    <ins class="display-block">{{ number_format($value->price)  }} đ</ins>
                                     @if($value->price !== $value->price_old)
                                         <del>{{ number_format($value->price_old)  }} đ</del>
                                     @endif
@@ -45,11 +45,11 @@
                                 </div>
                             </a>
                             <div class="media-body">
-                                <h4 class="media-heading"><a
-                                            href="{{ url('/san-pham/'.$value->slug.'-'.$value->id.'.html') }}">{{ $value->name }}</a>
-                                </h4>
+                                <a href="{{ url('/san-pham/'.$value->slug.'-'.$value->id.'.html') }}">
+                                    <p class="media-heading title-product-2-line">{{ $value->name }}</p>
+                                </a>
                                 <div class="price">
-                                    <ins>{{ number_format($value->price)  }} đ</ins>
+                                    <ins class="display-block">{{ number_format($value->price)  }} đ</ins>
                                     @if($value->price !== $value->price_old)
                                         <del>{{ number_format($value->price_old)  }} đ</del>
                                     @endif
@@ -72,11 +72,11 @@
                                 </div>
                             </a>
                             <div class="media-body">
-                                <h4 class="media-heading"><a
-                                            href="{{ url('/san-pham/'.$value->slug.'-'.$value->id.'.html') }}">{{ $value->name }}</a>
-                                </h4>
+                                <a href="{{ url('/san-pham/'.$value->slug.'-'.$value->id.'.html') }}">
+                                    <p class="media-heading title-product-2-line">{{ $value->name }}</p>
+                                </a>
                                 <div class="price">
-                                    <ins>{{ number_format($value->price)  }} đ</ins>
+                                    <ins class="display-block">{{ number_format($value->price)  }} đ</ins>
                                     @if($value->price !== $value->price_old)
                                         <del>{{ number_format($value->price_old)  }} đ</del>
                                     @endif

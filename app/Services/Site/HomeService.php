@@ -33,16 +33,20 @@ class HomeService
 
         $productViewHighest = $this->productRepository->getProductViewHighestOnSite();
         $productNew = $this->productRepository->getProductNewOnSite();
-        $productBestSeller = $this->productRepository->getBestSellerProduct();
 
-//        $top3ProductSell = $this->billDetailRepository->getBestSellProductOnSite();
-//        dd($top3ProductSell);
+        $productBestSeller = $this->productRepository->getBestSellerProduct();
+        $productShortestPrice = $this->productRepository->getShortestPriceProductOnSite();
+        $productRandom = $this->productRepository->getRandomProductOnSite();
+
 
         return [
             'banner' => $banner,
             'slider' => $slider,
             'productViewHighest' => $productViewHighest,
             'productNew' => $productNew,
+            'productBestSeller' => $productBestSeller,
+            'productShortestPrice' => $productShortestPrice,
+            'productRandom' => $productRandom,
         ];
     }
 

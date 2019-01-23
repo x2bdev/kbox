@@ -5,6 +5,7 @@ return [
 
         'NAME_REQUIRED'             => 'Tên không được bỏ trống.',
         'NAME_UNIQUE'               => 'Tên không được trùng.',
+        'NAME_PRODUCT_MAX'          => 'Tên không được dài quá 65 kí tự.',
 
         'PRICE_REQUIRED'            => 'Giá tiền không được bỏ trống.',
         'PRICE_NUMERIC'             => 'Giá tiền phải là số.',

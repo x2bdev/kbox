@@ -30,7 +30,7 @@
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
-                        <div class="form-group">
+                        <div class="form-group" style="display: none">
                             <label class="col-md-2 control-label">Danh mục cha <span class="required">*</span></label>
                             <div class="col-md-10">
                                 {!! Form::select('parent',
@@ -49,7 +49,7 @@
                         <div class="form-group">
                             <label class="col-md-2 control-label">Slug <span class="required">*</span></label>
                             <div class="col-md-10">
-                                {!! Form::text('slug', '', array('class' => 'form-control', 'placeholder' => 'Slug')) !!}
+                                {!! Form::text('slug', '', array('class' => 'form-control', 'placeholder' => 'Slug', 'readonly' => 'readonly')) !!}
                             </div>
                         </div>
                         <div class="form-group">

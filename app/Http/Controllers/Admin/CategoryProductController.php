@@ -122,6 +122,7 @@ class CategoryProductController extends Controller
     }
 
     public function create() {
+        $this->authorize('add');
         $categories = $this->categoryProductService->create();
         return view('admin.pages.category-product.create', [
             'categories'        => $categories
@@ -142,18 +143,22 @@ class CategoryProductController extends Controller
     }
 
     public function update(CategoryProductRequest $request, $id) {
+        $this->authorize('edit');
         return $this->categoryProductService->update($request, $id);
     }
 
     public function delete(Request $request) {
+        $this->authorize('delete');
         return $this->categoryProductService->delete($request);
     }
 
     public function changeStatus(Request $request) {
+        $this->authorize('edit');
         return $this->categoryProductService->changeStatus($request);
     }
 
     public function moveNode(Request $request){
+        $this->authorize('edit');
         return $this->categoryProductService->moveNode($request);
     }
 }

@@ -105,13 +105,13 @@ class BannerService
         } elseif ($banner->confirm_action === 'update') {
             $data = json_decode($banner->data_update, true);
             if ($data['image'] != $banner->image) {
-                $image_new = 'upload/images/' . $this->infoBasic['route'] . '/' . $banner->image;
-                $image_new_small = 'upload/images/' . $this->infoBasic['route'] . '/75x50/' . $banner->image;
-                if (File::exists($image_new)) {
-                    File::delete($image_new);
+                $image_old = 'upload/images/' . $this->infoBasic['route'] . '/' . $banner->image;
+                $image_old_small = 'upload/images/' . $this->infoBasic['route'] . '/75x50/' . $banner->image;
+                if (File::exists($image_old)) {
+                    File::delete($image_old);
                 }
-                if (File::exists($image_new_small)) {
-                    File::delete($image_new_small);
+                if (File::exists($image_old_small)) {
+                    File::delete($image_old_small);
                 }
             }
             $data['confirm_action'] = NULL;

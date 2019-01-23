@@ -29,7 +29,7 @@
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
-                        <div class="form-group">
+                        <div class="form-group"  style="display: none">
                             <label class="col-md-2 control-label">Danh mục cha <span class="required">*</span></label>
                             <div class="col-md-10">
                                 {!! Form::select('parent',

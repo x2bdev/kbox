@@ -171,7 +171,7 @@ class ProductRepository extends EloquentRepository implements ProductRepositoryI
 
         return $model->withoutGlobalScope('confirm')
             ->where('products.confirm_action', null)
-            ->orderBy('products.updated_at', 'desc')
+            ->orderBy('products.created_at', 'desc')
             ->paginate(9);
     }
 
@@ -198,7 +198,7 @@ class ProductRepository extends EloquentRepository implements ProductRepositoryI
         return $model->withoutGlobalScope('confirm')
             ->where('products.confirm_action', null)
             ->where('products.category_product_id', $id)
-            ->orderBy('products.updated_at', 'desc')
+            ->orderBy('products.created_at', 'desc')
             ->paginate(9);
     }
 
@@ -218,20 +218,48 @@ class ProductRepository extends EloquentRepository implements ProductRepositoryI
     public function getWishlistProduct($ids)
     {
         return $this->_model->whereIn('id', $ids)
-                    ->withoutGlobalScope('confirm')
-                    ->where('products.confirm_action', null)
-                    ->get();
+            ->withoutGlobalScope('confirm')
+            ->where('products.confirm_action', null)
+            ->get();
     }
 
     public function getBestSellerProduct()
     {
         return $this->_model
             ->withoutGlobalScope('confirm')
+            ->join('categories_product', 'products.category_product_id', '=', 'categories_product.id')
+            ->where('categories_product.status', "active")
             ->join('bill_details', 'products.id', '=', 'bill_details.product_id')
             ->where('products.confirm_action', null)
             ->select(DB::raw('products.*, COUNT(products.id) as total'))
             ->groupBy('products.id')
             ->orderBy('total', 'desc')
             ->paginate(3);
+    }
+
+    public function getShortestPriceProductOnSite()
+    {
+        return $this->_model
+            ->withoutGlobalScope('confirm')
+            ->join('categories_product', 'products.category_product_id', '=', 'categories_product.id')
+            ->where('categories_product.status', "active")
+            ->where('products.status', "active")
+            ->where('products.confirm_action', null)
+            ->select(['products.*'])
+            ->orderBy('products.price', "asc")
+            ->orderBy('products.updated_at', 'desc')
+            ->get(3);
+    }
+    public function getRandomProductOnSite()
+    {
+        return $this->_model
+            ->withoutGlobalScope('confirm')
+            ->join('categories_product', 'products.category_product_id', '=', 'categories_product.id')
+            ->where('categories_product.status', "active")
+            ->where('products.status', "active")
+            ->where('products.confirm_action', null)
+            ->select(['products.*'])
+            ->inRandomOrder()
+            ->get(3);
     }
 }

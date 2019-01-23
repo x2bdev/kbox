@@ -5,21 +5,25 @@
                 @foreach($productList as $key => $value)
                     <div class="thumbnail no-border no-padding product-item-{{ $value->id }} {{ $value->check_item === "active"?"true":"false" }}">
                         <div class="badges label-product">
-                            <div class="hot item-hot text-center">Hot</div>
-                            <div class="new item-new text-center">Mới</div>
+                            @if($value->new === "active")
+                                <div class="hot item-hot text-center">Hot</div>
+                            @endif
+                            @if($value->price !== $value->price_old)
+                                <div class="new item-new text-center item-sale">Sale</div>
+                            @endif
                         </div>
                         <div class="media thumbnail-img">
                             <a class="media-link" data-gal="prettyPhoto"
-                               href="{{ asset('public/frontend/assets/img/preview/shop/TEST-SQUARE-IMG.jpg') }}">
-                                <img src="{{ asset('public/frontend/assets/img/preview/shop/TEST-SQUARE-IMG.jpg') }}"
+                               href="{{ asset('public/upload/images/product/'.$value->image) }}">
+                                <img src="{{ asset('public/upload/images/product/'.$value->image) }}"
                                      alt=""/>
                                 <span class="icon-view"><strong><i class="fa fa-eye"></i></strong></span>
                             </a>
                         </div>
                         <div class="caption text-center">
-                            <h4 class="caption-title"><a
-                                        href="{{ url('/san-pham/'.$value->slug.'-'.$value->id.'.html') }}">{{ $value->name }}</a>
-                            </h4>
+                            <a href="{{ url('/san-pham/'.$value->slug.'-'.$value->id.'.html') }}">
+                                <p class="caption-title title-product-3-line title-product-60">{{ $value->name }}</p>
+                            </a>
                             <div class="price">
                                 <ins>{{ number_format($value->price)  }} đ</ins>
                                 @if($value->price !== $value->price_old)
@@ -27,7 +31,8 @@
                                 @endif
                             </div>
                             <div class="buttons">
-                                <a class="btn btn-theme btn-theme-transparent btn-wish-list btn-add-wishlist" href="#"><i
+                                <a class="btn btn-theme btn-theme-transparent btn-wish-list btn-add-wishlist"
+                                   href="#"><i
                                             class="fa fa-heart"></i></a><!--
                             --><a class="btn btn-theme btn-theme-transparent btn-icon-left btn-add-cart {{ $value->id }}"
                                   href="#"><i

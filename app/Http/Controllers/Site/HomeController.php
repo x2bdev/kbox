@@ -31,6 +31,9 @@ class HomeController extends Controller
             'slider' => $variables['slider'],
             'productList' => $variables['productViewHighest'],
             'productNew' => $variables['productNew'],
+            'productBestSeller' => $variables['productBestSeller'],
+            'productShortestPrice' => $variables['productShortestPrice'],
+            'productRandom' => $variables['productRandom'],
         ]);
     }
 

@@ -271,13 +271,12 @@
                                     cache: false,
                                     data: data,
                                     success: function (result) {
-                                        alert(result);
-                                        return false;
                                         if (jQuery.trim(result) === 'true') {
                                             for (i = 0; i < array_mail_choosed.length; i++) {
                                                 jQuery('.' + array_mail_choosed[i]).remove();
                                             }
                                         }
+                                        window.location.href = baseURL + 'admin/mailbox';
                                     },
                                     error: function () {
                                         alert('Error!!!');

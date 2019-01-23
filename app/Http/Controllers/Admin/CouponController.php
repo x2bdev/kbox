@@ -127,6 +127,7 @@ class CouponController extends Controller
 
     public function create()
     {
+        $this->authorize('add');
         return view('admin.pages.coupon.create');
     }
 
@@ -146,16 +147,19 @@ class CouponController extends Controller
 
     public function update(CouponRequest $request, $id)
     {
+        $this->authorize('edit');
         return $this->couponService->update($request, $id);
     }
 
     public function delete(Request $request)
     {
+        $this->authorize('delete');
         return $this->couponService->delete($request);
     }
 
     public function changeStatus(Request $request)
     {
+        $this->authorize('edit');
         return $this->couponService->changeStatus($request);
     }
 }

@@ -40,7 +40,6 @@
                                 <th><input type="checkbox" id="check-all" class="flat"></th>
                                 <th class="column-title">Tên người dùng</th>
                                 <th class="column-title">Email</th>
-                                <th class="column-title">Nhóm quyền</th>
                                 <th class="column-title">Tình trạng</th>
                                 <th class="column-title">Quản lý</th>
                                 <th class="bulk-actions" colspan="6">
@@ -63,9 +62,6 @@
                                             <p>{{$customer->email}}</p>
                                         </td>
                                         <td class="td-content">
-                                            <p>{{$customer->group->name}}</p>
-                                        </td>
-                                        <td class="td-content">
                                             <?php $labelStatus = ($customer->status == 'active') ? 'success' : 'danger'; ?>
                                             <?php $toStatus = ($customer->status == 'active') ? 'to-inactive' : 'to-active'; ?>
                                             <button onclick="changeStatusByIds('{{$customer->id}}', '{{$toStatus}}')"
@@ -74,13 +70,13 @@
                                             </button>
                                         </td>
                                         <td class="td-content" role="gridcell" aria-describedby="jqgrid_act">
-                                            @if($customer->email !== 'admin@gmail.com')
-                                                <a href="{{route('customer.edit', $customer->id)}}" class="btn btn-info btn-xs"
-                                                       data-toggle="tooltip" data-placement="bottom"
-                                                   data-original-title="Chỉnh sửa thông tin">
-                                                    <i class="fa fa-pencil"></i> Sửa
-                                                </a>
-                                            @endif
+                                            {{--@if($customer->email !== 'admin@gmail.com')--}}
+                                                {{--<a href="{{route('customer.edit', $customer->id)}}" class="btn btn-info btn-xs"--}}
+                                                       {{--data-toggle="tooltip" data-placement="bottom"--}}
+                                                   {{--data-original-title="Chỉnh sửa thông tin">--}}
+                                                    {{--<i class="fa fa-pencil"></i> Sửa--}}
+                                                {{--</a>--}}
+                                            {{--@endif--}}
                                         </td>
                                     </tr>
                                 @endforeach

@@ -2,7 +2,7 @@
 <div class="widget">
     <div class="widget-search">
         <form action="{{ url('tim-kiem.html') }}" method="get">
-            <input class="form-control" name="q" type="text" placeholder="Search">
+            <input class="form-control" name="q" type="text" placeholder="Nhập từ khóa">
             <button type="submit"><i class="fa fa-search"></i></button>
         </form>
     </div>
@@ -28,13 +28,3 @@
 {{--</div>--}}
 {{--</div>--}}
 @include('frontend.blocks.partial.tab_product_sidebar')
-@section('js_content')
-    <script>
-        $(document).ready(function () {
-            $('#slider-range').onchange(function () {
-                alert(1);
-            })
-            // alert($('#amount').val());
-        });
-    </script>
-@endsection

@@ -80,14 +80,17 @@ class BillController extends Controller
     }
 
     public function update(BillRequest $request, $id) {
+        $this->authorize('admin');
         return $this->billService->update($request, $id);
     }
 
     public function delete(Request $request) {
+        $this->authorize('edit');
         return $this->billService->delete($request);
     }
 
     public function changeStatus(Request $request) {
+        $this->authorize('edit');
         return $this->billService->changeStatus($request);
     }
 }

@@ -23,7 +23,7 @@
                 @if($products === NULL || $products === "")
                     <h2 class="text-center">Giỏ hàng trống</h2>
                     <hr>
-                    <button class="btn btn-warning center-block">Mua sắm tiếp</button>
+                    <a href="{{ url('san-pham.html') }}"><button class="btn btn-warning center-block">Mua sắm tiếp</button></a>
                 @else
                     <h3 class="block-title alt"><i class="fa fa-eye"></i>Thông tin đơn hàng</h3>
                     {!! Form::open(['method' => 'POST' ,'class' => '111' ,'url' => route('cart.update')]) !!}

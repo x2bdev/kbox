@@ -11,8 +11,12 @@
                           style="display: none">{{ $productSingle->check_item === "active"?"true":"false" }}</span>
                     <div class="col-md-6">
                         <div class="badges">
-                            <div class="hot item-hot">Hot</div>
-                            <div class="new item-new">Mới</div>
+                            @if($productSingle->new === "active")
+                                <div class="hot item-hot text-center">Hot</div>
+                            @endif
+                            @if($productSingle->price !== $productSingle->price_old)
+                                <div class="new item-new text-center item-sale">Sale</div>
+                            @endif
                         </div>
                         <div class="owl-carousel img-carousel H600">
                             <div class="item">
