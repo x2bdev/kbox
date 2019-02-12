@@ -23,7 +23,7 @@ class DashboardController extends Controller
     }
 
     public function index() {
-        $totalCategoryProduct = DB::table('categories_product')->where('status', 'active')->count();
+        $totalCategoryProduct = DB::table('categories_product')->where('id','<>', 0)->where('status', 'active')->count();
         $totalProduct = DB::table('products')->where('status', 'active')->count();
         $totalUser = DB::table('users')->where('status', 'active')
                                             ->where('group_id', 2)->count();

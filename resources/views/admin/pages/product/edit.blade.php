@@ -34,9 +34,9 @@
                             <label class="col-md-2 control-label">Danh mục</label>
                             <div class="col-md-10">
                                 {!! Form::select('category_product_id',
-                                    $categories,
-                                    $data->category_article_id,
-                                    array( 'class' => 'form-control select-category' )
+                                $categories,
+                                $data->category_product_id,
+                                array( 'class' => 'form-control select-category' )
                                 ) !!}
                             </div>
                         </div>
@@ -157,12 +157,12 @@
 
             $("#color").tagsInput({
                 width: "auto",
-                defaultText:'add words',
+                defaultText: 'add words',
             });
 
             $("#size").tagsInput({
                 width: "auto",
-                defaultText:'add words',
+                defaultText: 'add words',
             });
 
             //get image detail

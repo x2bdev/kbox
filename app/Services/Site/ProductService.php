@@ -10,18 +10,22 @@ namespace App\Services\Site;
 
 
 use App\Repositories\InterfaceRepository\CategoryProductRepositoryInterface;
+use App\Repositories\InterfaceRepository\PartnerRepositoryInterface;
 use App\Repositories\InterfaceRepository\ProductRepositoryInterface;
 use Illuminate\Http\Request;
 
 class ProductService
 {
     private $productRepository;
+    private $partnerRepository;
     private $categoryProductRepository;
 
-    public function __construct(ProductRepositoryInterface $productRepository, CategoryProductRepositoryInterface $categoryProductRepository)
+    public function __construct(ProductRepositoryInterface $productRepository,
+                                CategoryProductRepositoryInterface $categoryProductRepository, PartnerRepositoryInterface $partnerRepository)
     {
         $this->productRepository = $productRepository;
         $this->categoryProductRepository = $categoryProductRepository;
+        $this->partnerRepository = $partnerRepository;
     }
 
     public function index($request)
@@ -100,7 +104,9 @@ class ProductService
             abort(404);
         }
         $this->productRepository->incrementView($id);
+        $partner = $this->partnerRepository->getPartnerOnSite();
         return [
+            'partner' => $partner,
             'productSingle' => $productSingle,
             'imageDetail' => $image_detail,
             'productRelated' => $productRelated,

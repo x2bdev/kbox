@@ -101,5 +101,10 @@ class AppServiceProvider extends ServiceProvider
             \App\Repositories\InterfaceRepository\CustomerRepositoryInterface::class,
             \App\Repositories\CustomerRepository::class
         );
+        // Partner
+        $this->app->singleton(
+            \App\Repositories\InterfaceRepository\PartnerRepositoryInterface::class,
+            \App\Repositories\PartnerRepository::class
+        );
     }
 }

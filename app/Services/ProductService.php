@@ -328,6 +328,7 @@ class ProductService
                 $category[$cate->id] = $space . $cate->name;
             }
         }
+//        dd($category);
         $image_detail = json_decode($data->image_detail, true);
 
         return [

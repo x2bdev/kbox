@@ -222,8 +222,37 @@ Route::group(['prefix' => 'admin', 'middleware' => ['authAdminRoute']], function
         'as' => 'banner.confirmActionApply',
         'uses' => 'Admin\BannerController@updateConfirmApply',
     ]);
-
     Route::resource('banner', 'Admin\BannerController');
+
+
+    Route::get('partner/status', [
+        'as' => 'partner.status',
+        'uses' => 'Admin\PartnerController@changeStatus',
+    ]);
+
+    Route::get('partner/delete', [
+        'as' => 'partner.delete',
+        'uses' => 'Admin\PartnerController@delete',
+    ]);
+
+    Route::get('partner/confirm', [
+        'as' => 'partner.indexConfirm',
+        'uses' => 'Admin\PartnerController@indexConfirm',
+    ]);
+    Route::get('partner/confirm/{id}', [
+        'as' => 'partner.confirm',
+        'uses' => 'Admin\PartnerController@viewConfirm',
+    ]);
+    Route::get('partner/confirmCancel/{id}', [
+        'as' => 'partner.confirmActionCancel',
+        'uses' => 'Admin\PartnerController@updateConfirmCancel',
+    ]);
+    Route::get('partner/confirmApply/{id}', [
+        'as' => 'partner.confirmActionApply',
+        'uses' => 'Admin\PartnerController@updateConfirmApply',
+    ]);
+
+    Route::resource('partner', 'Admin\PartnerController');
 
     // Category Article
     Route::get('category-article/move-node', [

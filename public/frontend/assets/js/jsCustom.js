@@ -1,5 +1,9 @@
+// $(document).ready(function () {
+//     alert(1);
+// });
+
 function redirectUrl(e) {
-    window.location.href = "trangchu.html";
+    // window.location.href = "trangchu.html";
     var q = document.URL.split('?')[1];
     var query = q;
     var baseURL = location.protocol + '//' + location.host + window.location.pathname;
@@ -13,26 +17,13 @@ function redirectUrl(e) {
             vars[hash[0]] = hash[1];
         }
     }
-    // alert(vars['mau']);
-    // return false;
-    if (vars['mau'] === undefined) {
-        if (vars['gia'] === undefined) {
-            newURL = baseURL + "?" + e.value;
-        }
-        else {
-            newURL = baseURL + "?gia=" + vars['gia'] + '&' + e.value;
-        }
+    if (e.value === 'default') {
+        window.location.href = location.protocol + '//' + location.host + '/san-pham.html';
     } else {
-        if (vars['gia'] === undefined) {
-            newURL = baseURL + "?mau=" + vars['mau'] + '&' + e.value;
-        } else {
-            newURL = baseURL + "?mau=" + vars['mau'] + '&gia=' + vars['gia'] + '&' + e.value;
+        newURL = baseURL + "?" + e.value;
+        if (vars['q'] !== undefined) {
+            newURL = baseURL + "?q=" + vars['q'] + '&' + e.value;
         }
+        window.location.href = newURL;
     }
-
-    if (vars['q'] !== undefined) {
-        newURL = baseURL + "?q=" + vars['q'] + '&' + e.value;
-    }
-
-    window.location.href = newURL;
 }

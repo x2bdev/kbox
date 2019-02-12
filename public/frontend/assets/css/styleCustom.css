@@ -261,3 +261,6 @@ li.page-item.active {
     margin-right: auto !important;
     display: block !important;
 }
+.padding-10{
+    padding: 10px !important;
+}

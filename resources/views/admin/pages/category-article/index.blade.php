@@ -6,7 +6,7 @@ $model = new CategoryArticleRepository();
 
 @section('breadcrumbs_no_url')
     <div class="row">
-        <h3 class="txt-color-blueDark"><i class="fa-fw fa fa-user"></i> Category Article </h3>
+        <h3 class="txt-color-blueDark"><i class="fa-fw fa fa-user"></i> Danh mục bài viết </h3>
     </div>
     @include('admin.blocks.notify.notify_notice')
 @endsection

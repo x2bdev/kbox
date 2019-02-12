@@ -39,9 +39,10 @@
                             <tr class="headings a-center">
                                 <th><input type="checkbox" id="check-all" class="flat"></th>
                                 <th class="column-title">Tên người dùng</th>
+                                <th class="column-title">Điện thoại</th>
                                 <th class="column-title">Email</th>
+                                <th class="column-title">Địa chỉ</th>
                                 <th class="column-title">Tình trạng</th>
-                                <th class="column-title">Quản lý</th>
                                 <th class="bulk-actions" colspan="6">
                                     <a class="antoo" style="color:#fff; font-weight:500;">
                                         Tổng số ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i>
@@ -58,9 +59,11 @@
                                                    value="{{$customer->id}}">
                                         </td>
                                         <td class="td-content">{{$customer->name}}</td>
+                                        <td class="td-content">{{$customer->phone}}</td>
                                         <td class="td-content">
                                             <p>{{$customer->email}}</p>
                                         </td>
+                                        <td class="td-content">{{$customer->address}}</td>
                                         <td class="td-content">
                                             <?php $labelStatus = ($customer->status == 'active') ? 'success' : 'danger'; ?>
                                             <?php $toStatus = ($customer->status == 'active') ? 'to-inactive' : 'to-active'; ?>
@@ -69,7 +72,7 @@
                                                 <?php echo ($customer->status == 'active') ? "Kích hoạt" : "Không kích hoạt";?>
                                             </button>
                                         </td>
-                                        <td class="td-content" role="gridcell" aria-describedby="jqgrid_act">
+                                        {{--<td class="td-content" role="gridcell" aria-describedby="jqgrid_act">--}}
                                             {{--@if($customer->email !== 'admin@gmail.com')--}}
                                                 {{--<a href="{{route('customer.edit', $customer->id)}}" class="btn btn-info btn-xs"--}}
                                                        {{--data-toggle="tooltip" data-placement="bottom"--}}
@@ -77,7 +80,7 @@
                                                     {{--<i class="fa fa-pencil"></i> Sửa--}}
                                                 {{--</a>--}}
                                             {{--@endif--}}
-                                        </td>
+                                        {{--</td>--}}
                                     </tr>
                                 @endforeach
                             @else

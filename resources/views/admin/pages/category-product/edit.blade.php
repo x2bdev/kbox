@@ -67,7 +67,6 @@
                 @endphp
                 @include('admin.blocks.box.submit')
                 @include('admin.blocks.box.edit.status')
-                @include('admin.blocks.box.edit.show-frontend')
             </div>
         </div>
         {!! Form::close() !!}

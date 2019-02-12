@@ -68,7 +68,7 @@ class ViewServiceProvider extends ServiceProvider
 //        });
 //
         view()->composer('*', function ($view) {
-            $categoriesLv1 = CategoryProduct::where('status', 'active')->where('id', '>', '0')->withoutGlobalScope('confirm')->where('confirm_action', null)->where('level', '=', '1')->get();
+            $categoriesLv1 = CategoryProduct::where('status', 'active')->orderBy('left', 'asc')->where('id', '>', '0')->withoutGlobalScope('confirm')->where('confirm_action', null)->where('level', '=', '1')->get();
 
             $view->with(['categoriesHeaderLv1' => $categoriesLv1]);
         });

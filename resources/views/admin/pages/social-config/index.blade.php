@@ -36,7 +36,7 @@
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             <input type="text" id="facebook_url" name="facebook_url"
-                                   value="{{ $socialConfig['facebook_url'] }}" required="required"
+                                   value="{{ $socialConfig['facebook_url'] }}" placeholder="Để # nếu không có" required="required"
                                    class="form-control col-md-7 col-xs-12">
                         </div>
                     </div>
@@ -46,7 +46,7 @@
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             <input type="text" id="shopee_url" name="shopee_url"
-                                   value="{{ $socialConfig['shopee_url'] }}" required="required"
+                                   value="{{ $socialConfig['shopee_url'] }}" placeholder="Để # nếu không có" required="required"
                                    class="form-control col-md-7 col-xs-12">
                         </div>
                     </div>
@@ -55,7 +55,7 @@
                                     class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input type="text" id="zalo_url" name="zalo_url" value="{{ $socialConfig['zalo_url'] }}"
+                            <input type="text" id="zalo_url" name="zalo_url" placeholder="Để # nếu không có" value="{{ $socialConfig['zalo_url'] }}"
                                    required="required" class="form-control col-md-7 col-xs-12">
                         </div>
                     </div>
@@ -64,7 +64,7 @@
                                     class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input type="text" id="lazada_url" name="lazada_url"
+                            <input type="text" id="lazada_url" name="lazada_url" placeholder="Để # nếu không có"
                                    value="{{ $socialConfig['lazada_url'] }}" required="required"
                                    class="form-control col-md-7 col-xs-12">
                         </div>
@@ -74,7 +74,6 @@
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-5">
                             <button onclick="saveSocialConfig()" type="button" class="btn btn-success">Lưu dữ liệu
                             </button>
-                            <button class="btn btn-info" type="button">Reset</button>
                         </div>
                     </div>
                     {!! Form::close() !!}

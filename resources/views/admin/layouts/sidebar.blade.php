@@ -48,6 +48,8 @@
                                         href="{{ route('banner.index') }}">Banner</a></li>
                             <li class="{{ Active::checkRoute(['coupon.*'], 'active', '') }}"><a
                                         href="{{ route('coupon.index') }}">Mã khuyến mãi</a></li>
+                            <li class="{{ Active::checkRoute(['partner.*'], 'active', '') }}"><a
+                                        href="{{ route('partner.index') }}">Đối tác</a></li>
                         </ul>
                     </li>
                     <li class="{{ Active::checkRoute(['category-article.*', 'article.*'], 'active', '') }}"><a><i

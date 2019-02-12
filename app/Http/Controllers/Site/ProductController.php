@@ -39,6 +39,7 @@ class ProductController extends Controller
         $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
         return view('frontend.pages.product.detail_product', [
             'productSingle' => $variables['productSingle'],
+            'partners' => $variables['partner'],
             'imageDetail' => $variables['imageDetail'],
             'productRelated' => $variables['productRelated'],
             'url' => $url

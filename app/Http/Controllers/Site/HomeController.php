@@ -29,6 +29,7 @@ class HomeController extends Controller
         return view('frontend.pages.home.index', [
             'banner' => $variables['banner'],
             'slider' => $variables['slider'],
+            'partners' => $variables['partner'],
             'productList' => $variables['productViewHighest'],
             'productNew' => $variables['productNew'],
             'productBestSeller' => $variables['productBestSeller'],

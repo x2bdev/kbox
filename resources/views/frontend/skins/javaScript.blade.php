@@ -24,6 +24,8 @@
 {{--<script src="{{ asset('public/frontend/assets/js/theme-config.js') }}"></script>--}}
 <!--<![endif]-->
 <script src="{{ asset('public/frontend/assets/js/my-script.js') }}"></script>
+{{--Custom JS--}}
+<script src="{{ asset('public/frontend/assets/js/jsCustom.js')}} "></script>
 @yield('js_customer')
 @yield('js_button')
 @yield('js_content')

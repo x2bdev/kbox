@@ -39,7 +39,6 @@
                     <div class="item form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-5">
                             <button onclick="saveAboutConfig()" type="button" class="btn btn-success">Lưu dữ liệu </button>
-                            <button class="btn btn-info" type="button">Reset</button>
                         </div>
                     </div>
                     {!! Form::close() !!}

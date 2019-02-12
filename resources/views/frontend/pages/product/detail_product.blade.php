@@ -51,7 +51,7 @@
                         </div>
                         <div class="row product-thumbnails">
                             <div class="col-xs-2 col-sm-2 col-md-3">
-                                <a href="#" click="jQuery('.img-carousel').trigger('to.owl.carousel', [0, 300]);">
+                                <a href="#" onclick="jQuery('.img-carousel').trigger('to.owl.carousel', [0, 300]);">
                                     <div class="image-small-frames"><img
                                                 src=" {{ asset('public/upload/images/product/'.$productSingle->image) }}"
                                                 alt=""/></div>
@@ -61,7 +61,7 @@
                                 @foreach($imageDetail as $key => $value)
                                     <div class="col-xs-2 col-sm-2 col-md-3">
                                         <a href="#"
-                                           onclick="jQuery('.img-carousel').trigger('to.owl.carousel', [1, 300]);">
+                                           onclick="jQuery('.img-carousel').trigger('to.owl.carousel', [{{ $key+=1 }}, 300]);">
                                             <div class="image-small-frames"><img
                                                         src=" {{ asset('public/upload/images/product/'.$value) }}"
                                                         alt=""/></div>
@@ -73,8 +73,8 @@
                     </div>
                     <div class="col-md-6">
                         <div class="back-to-category">
-                            <span class="link"><i class="fa fa-angle-left"></i> Trở lại <a
-                                        href="category.html">Category</a></span>
+                            <span class="link"><i class="fa fa-angle-left"></i><a
+                                        href="{{ url()->previous() }}"> Trở lại </a></span>
                         </div>
                         <h2 class="product-title">{{ $productSingle->name }}</h2>
                         <div class="product-availability">Tình trạng: <strong>Còn hàng</strong></div>

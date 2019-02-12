@@ -54,8 +54,6 @@
                             <div class="col-md-2" style="padding-top: 1px">
                                 <select id="status" name="status"
                                         class='select2 form-control'>
-                                    <option {{ $data->status == 'receive'?'selected':'' }} value="receive">Đã Nhận
-                                    </option>
                                     <option {{ $data->status == 'process'?'selected':'' }} value="process">Đang xử lí
                                     </option>
                                     <option {{ $data->status == 'success'?'selected':'' }} value="success">Đã giao

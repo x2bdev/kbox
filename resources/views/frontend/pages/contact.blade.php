@@ -238,9 +238,7 @@
                 <div class="google-map">
                     <div id="map-canvas">
                         <div class="communication-info">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.5550587634457!2d106.62883821530102!3d10.768733792326803!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752e9fb3efbab7%3A0xe676d14d2586afa4!2zMTkgSG_DoG5nIFh1w6JuIEhvw6BuaCwgVMOibiBUaOG7m2kgSG_DoCwgVMOibiBQaMO6LCBI4buTIENow60gTWluaCwgVmnhu4d0IE5hbQ!5e0!3m2!1svi!2s!4v1543977729996"
-                                    width="1150" height="300" frameborder="0" style="border:0"
-                                    allowfullscreen></iframe>
+                            {!!  $contactConfig->map  !!}
                         </div>
                     </div>
                 </div>

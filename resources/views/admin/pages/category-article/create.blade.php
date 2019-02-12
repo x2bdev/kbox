@@ -49,7 +49,7 @@
                         <div class="form-group">
                             <label class="col-md-2 control-label">Slug <span class="required">*</span></label>
                             <div class="col-md-10">
-                                {!! Form::text('slug', '', array('class' => 'form-control', 'placeholder' => 'Slug')) !!}
+                                {!! Form::text('slug', '', array('class' => 'form-control', 'placeholder' => 'Slug', 'readonly' => 'readonly')) !!}
                             </div>
                         </div>
                         <div class="form-group">
