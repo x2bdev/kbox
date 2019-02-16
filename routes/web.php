@@ -512,7 +512,7 @@ Route::group(['prefix' => '/'], function () {
         'uses' => 'Site\CustomerController@logout',
     ]);
 
-    Route::get('tai-khoan', [
+    Route::get('tai-khoan.html', [
         'as' => 'taikhoan.profile',
         'uses' => 'Site\CustomerController@profile',
     ]);

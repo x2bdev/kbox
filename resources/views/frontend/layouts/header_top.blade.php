@@ -3,7 +3,7 @@
         <div class="top-bar-left">
             <ul class="list-inline">
                 @if(Auth::guard('customer')->check())
-                    <li class="icon-user"><a href="login.html"><img src="{{ asset('public/frontend/assets/img/icon-1.png') }}" alt=""/>
+                    <li class="icon-user"><a href="{{ url('/tai-khoan.html') }}"><img src="{{ asset('public/frontend/assets/img/icon-1.png') }}" alt=""/>
                         <span>Chào bạn: {{ Auth::guard('customer')->user()->name }}</span></a>
                     </li>
                 @else
