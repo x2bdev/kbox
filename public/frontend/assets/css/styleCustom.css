@@ -40,6 +40,7 @@ p {
     display: block !important;
 }
 
+
 #qty-product {
     width: 56px;
 }
@@ -263,4 +264,7 @@ li.page-item.active {
 }
 .padding-10{
     padding: 10px !important;
+}
+.view-float-left{
+    float: left !important;
 }
