@@ -20,6 +20,9 @@
         <div class="top-bar-right">
             <ul class="list-inline">
                 @if(Auth::guard('customer')->check())
+                    <li class="icon-user"><a href="/doi-mat-khau.html"><img src="assets/img/icondoi-1.png" alt=""/>
+                            <span>Đổi mật khẩu</span></a>
+                    </li>
                     <li class="icon-user"><a href="/dang-xuat.html"><img src="assets/img/icon-1.png" alt=""/>
                         <span>Đăng xuất</span></a>
                     </li>

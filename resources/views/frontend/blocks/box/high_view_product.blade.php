@@ -32,7 +32,7 @@
                             </div>
                             <div class="buttons">
                                 <a class="btn btn-theme btn-theme-transparent btn-wish-list btn-add-wishlist"
-                                   href="#"><i
+                                   href="javascript:void(0)" onclick="addFavorite('{{ $value->id }}')"><i
                                             class="fa fa-heart"></i></a><!--
                             --><a class="btn btn-theme btn-theme-transparent btn-icon-left btn-add-cart {{ $value->id }}"
                                   href="#"><i

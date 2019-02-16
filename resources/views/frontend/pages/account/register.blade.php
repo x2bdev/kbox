@@ -13,11 +13,11 @@
                             'url'=> route('taikhoan.register.post'),
                             'class' => 'create-account'
                         )) !!}
-                        @if(Session::has('noticeMassage'))
+                        @if(Session::has('noticeMessage'))
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="alert alert-success">
-                                        {{ Session::get('noticeMassage') }}
+                                        {{ Session::get('noticeMessage') }}
                                     </div>
                                 </div>
                             </div>

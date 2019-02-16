@@ -512,6 +512,16 @@ Route::group(['prefix' => '/'], function () {
         'uses' => 'Site\CustomerController@logout',
     ]);
 
+    Route::get('doi-mat-khau.html', [
+        'as' => 'taikhoan.change-password',
+        'uses' => 'Site\CustomerController@changePassword',
+    ]);
+
+    Route::post('doi-mat-khau.html', [
+        'as' => 'taikhoan.change-password.post',
+        'uses' => 'Site\CustomerController@updatePassword',
+    ]);
+
     Route::get('tai-khoan.html', [
         'as' => 'taikhoan.profile',
         'uses' => 'Site\CustomerController@profile',

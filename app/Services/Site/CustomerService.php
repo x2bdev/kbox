@@ -11,6 +11,7 @@ namespace App\Services\Site;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Hash;
 use App\Repositories\InterfaceRepository\CustomerRepositoryInterface;
+use Auth;
 
 class CustomerService
 {
@@ -57,7 +58,7 @@ class CustomerService
         $this->customerRepository->store($data);
         return redirect()
             ->route('taikhoan.register')
-            ->with(['noticeMassage' => 'Đăng ký tài khoản thành công']);
+            ->with(['noticeMessage' => 'Đăng ký tài khoản thành công']);
     }
 
     public function edit($id)
@@ -88,5 +89,14 @@ class CustomerService
         return redirect()
             ->route($this->infoBasic['route'] . '.index')
             ->with(['noticeMessage' => Config::get('constants.SUCCESSFUL_MESSAGE.EDIT')]);
+    }
+
+    public function changePassword($request) {
+        $id = Auth::guard('customer')->user()->id;
+        $data['password'] = Hash::make($request->get('password'));
+        $this->customerRepository->update($data, $id);
+        return redirect()
+            ->route('taikhoan.change-password')
+            ->with(['noticeMessage' => 'Đổi mật khẩu thành công']);
     }
 }

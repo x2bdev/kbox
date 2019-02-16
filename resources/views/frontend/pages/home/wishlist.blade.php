@@ -21,7 +21,7 @@
         <section class="page-section color no-padding-bottom">
             <div class="container">
 
-                <div class="row wishlist">
+                <div class="row wishlist" id="list-product">
                     <div class="col-md-12">
                         <table class="table">
                             <thead>
@@ -68,16 +68,16 @@
         Number.prototype.format = function (n, x, s, c) {
             var re = '\\d(?=(\\d{' + (x || 3) + '})+' + (n > 0 ? '\\D' : '$') + ')',
                 num = this.toFixed(Math.max(0, ~~n));
-
             return (c ? num.replace('.', c) : num).replace(new RegExp(re, 'g'), '$&' + (s || ','));
         };
 
         $(document).ready(function () {
             var obj = [];
             objProductFavorite = JSON.parse(localStorage.getItem("favoriteProduct"));
+            console.log(objProductFavorite.length);
             if (objProductFavorite.length === 0) {
                 $('#list-product').empty();
-                $('#list-product').append(`<h4 class="text-center">Vẫn chưa có sản phẩm yêu thích nào</h4>`);
+                $('#list-product').append(`<h1 class="text-center" style="margin-bottom: 50px;">Vẫn chưa có sản phẩm yêu thích nào</h1>`);
                 return false;
             }
             else {
@@ -99,7 +99,7 @@
                                 let htmlMore = $(templateHtml).html();
                                 let image = "public/upload/images/product/" + value.image;
                                 let link = '/san-pham/' + value.slug + '-' + value.id + '.html';
-                                let price = value.price.format();
+                                let price = parseInt(value.price).format();
                                 htmlMore = htmlMore.replace(/{id}/g, value.id);
                                 htmlMore = htmlMore.replace(/{name}/g, value.name);
                                 htmlMore = htmlMore.replace(/{price}/g, price);

@@ -15,6 +15,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Site\LoginUserRequest;
 use App\Services\Site\CustomerService;
 use App\Http\Requests\Site\RegisterUserRequest;
+use App\Http\Requests\Site\ChangePasswordUserRequest;
 
 class CustomerController extends Controller
 {
@@ -68,6 +69,22 @@ class CustomerController extends Controller
 
     public function profile()
     {
+        if(!Auth::guard('customer')->check()) {
+            return redirect(route('taikhoan.login'));
+        }
         return view('frontend.pages.account.my_account');
+    }
+
+    public function changePassword() {
+        if(!Auth::guard('customer')->check()) {
+            return redirect(route('taikhoan.login'));
+        }
+        else {
+            return view('frontend.pages.account.changePassword');
+        }
+    }
+
+    public function updatePassword(ChangePasswordUserRequest $request) {
+        return $this->customerService->changePassword($request);
     }
 }
